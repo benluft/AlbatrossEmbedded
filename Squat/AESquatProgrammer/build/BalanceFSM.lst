@@ -1,0 +1,2293 @@
+ARM GAS  /tmp/cc0JlP6E.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"BalanceFSM.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.global	currentState
+  18              		.section	.bss.currentState,"aw",%nobits
+  21              	currentState:
+  22 0000 00       		.space	1
+  23              		.global	nextState
+  24              		.section	.bss.nextState,"aw",%nobits
+  27              	nextState:
+  28 0000 00       		.space	1
+  29              		.section	.data.u32ADC1Channel1Value,"aw",%progbits
+  30              		.align	2
+  33              	u32ADC1Channel1Value:
+  34 0000 01000000 		.word	1
+  35              		.section	.data.u32ADC1Channel2Value,"aw",%progbits
+  36              		.align	2
+  39              	u32ADC1Channel2Value:
+  40 0000 01000000 		.word	1
+  41              		.section	.data.u32ADC2Value,"aw",%progbits
+  42              		.align	2
+  45              	u32ADC2Value:
+  46 0000 01000000 		.word	1
+  47              		.section	.data.u32ADC3Value,"aw",%progbits
+  48              		.align	2
+  51              	u32ADC3Value:
+  52 0000 01000000 		.word	1
+  53              		.section	.bss.u32ADC1Channel1ValueNoWeightThreshold,"aw",%nobits
+  54              		.align	2
+  57              	u32ADC1Channel1ValueNoWeightThreshold:
+  58 0000 00000000 		.space	4
+  59              		.section	.bss.u32ADC1Channel2ValueNoWeightThreshold,"aw",%nobits
+  60              		.align	2
+  63              	u32ADC1Channel2ValueNoWeightThreshold:
+  64 0000 00000000 		.space	4
+  65              		.section	.bss.u32ADC2ValueNoWeightThreshold,"aw",%nobits
+  66              		.align	2
+  69              	u32ADC2ValueNoWeightThreshold:
+  70 0000 00000000 		.space	4
+  71              		.section	.bss.u32ADC3ValueNoWeightThreshold,"aw",%nobits
+  72              		.align	2
+  75              	u32ADC3ValueNoWeightThreshold:
+  76 0000 00000000 		.space	4
+  77              		.section	.bss.u32ADC1Channel1Zero,"aw",%nobits
+ARM GAS  /tmp/cc0JlP6E.s 			page 2
+
+
+  78              		.align	2
+  81              	u32ADC1Channel1Zero:
+  82 0000 00000000 		.space	4
+  83              		.section	.bss.u32ADC1Channel2Zero,"aw",%nobits
+  84              		.align	2
+  87              	u32ADC1Channel2Zero:
+  88 0000 00000000 		.space	4
+  89              		.section	.bss.u32ADC2Zero,"aw",%nobits
+  90              		.align	2
+  93              	u32ADC2Zero:
+  94 0000 00000000 		.space	4
+  95              		.section	.bss.u32ADC3Zero,"aw",%nobits
+  96              		.align	2
+  99              	u32ADC3Zero:
+ 100 0000 00000000 		.space	4
+ 101              		.section	.bss.bIsThisFirstChannelADC1,"aw",%nobits
+ 104              	bIsThisFirstChannelADC1:
+ 105 0000 00       		.space	1
+ 106              		.section	.data.bIsBLEConnected,"aw",%progbits
+ 109              	bIsBLEConnected:
+ 110 0000 01       		.byte	1
+ 111              		.section	.bss.au32ADC1Channel1Samples,"aw",%nobits
+ 112              		.align	2
+ 115              	au32ADC1Channel1Samples:
+ 116 0000 00000000 		.space	40
+ 116      00000000 
+ 116      00000000 
+ 116      00000000 
+ 116      00000000 
+ 117              		.section	.bss.au32ADC1Channel2Samples,"aw",%nobits
+ 118              		.align	2
+ 121              	au32ADC1Channel2Samples:
+ 122 0000 00000000 		.space	40
+ 122      00000000 
+ 122      00000000 
+ 122      00000000 
+ 122      00000000 
+ 123              		.section	.bss.au32ADC2Samples,"aw",%nobits
+ 124              		.align	2
+ 127              	au32ADC2Samples:
+ 128 0000 00000000 		.space	40
+ 128      00000000 
+ 128      00000000 
+ 128      00000000 
+ 128      00000000 
+ 129              		.section	.bss.au32ADC3Samples,"aw",%nobits
+ 130              		.align	2
+ 133              	au32ADC3Samples:
+ 134 0000 00000000 		.space	40
+ 134      00000000 
+ 134      00000000 
+ 134      00000000 
+ 134      00000000 
+ 135              		.section	.bss.u32AvgADC1Channel1,"aw",%nobits
+ 136              		.align	2
+ 139              	u32AvgADC1Channel1:
+ 140 0000 00000000 		.space	4
+ARM GAS  /tmp/cc0JlP6E.s 			page 3
+
+
+ 141              		.section	.bss.u32AvgADC1Channel2,"aw",%nobits
+ 142              		.align	2
+ 145              	u32AvgADC1Channel2:
+ 146 0000 00000000 		.space	4
+ 147              		.section	.bss.u32AvgADC2,"aw",%nobits
+ 148              		.align	2
+ 151              	u32AvgADC2:
+ 152 0000 00000000 		.space	4
+ 153              		.section	.bss.u32AvgADC3,"aw",%nobits
+ 154              		.align	2
+ 157              	u32AvgADC3:
+ 158 0000 00000000 		.space	4
+ 159              		.section	.bss.u32AvgOverall,"aw",%nobits
+ 160              		.align	2
+ 163              	u32AvgOverall:
+ 164 0000 00000000 		.space	4
+ 165              		.global	u8LeftFrontPercent
+ 166              		.section	.data.u8LeftFrontPercent,"aw",%progbits
+ 169              	u8LeftFrontPercent:
+ 170 0000 19       		.byte	25
+ 171              		.global	u8LeftBackPercent
+ 172              		.section	.data.u8LeftBackPercent,"aw",%progbits
+ 175              	u8LeftBackPercent:
+ 176 0000 19       		.byte	25
+ 177              		.global	u8RightFrontPercent
+ 178              		.section	.data.u8RightFrontPercent,"aw",%progbits
+ 181              	u8RightFrontPercent:
+ 182 0000 19       		.byte	25
+ 183              		.global	u8RightBackPercent
+ 184              		.section	.data.u8RightBackPercent,"aw",%progbits
+ 187              	u8RightBackPercent:
+ 188 0000 19       		.byte	25
+ 189              		.section	.bss.au8UartReceivedMessage,"aw",%nobits
+ 190              		.align	2
+ 193              	au8UartReceivedMessage:
+ 194 0000 00000000 		.space	4
+ 195              		.section	.bss.u8UartReceiveIndex,"aw",%nobits
+ 198              	u8UartReceiveIndex:
+ 199 0000 00       		.space	1
+ 200              		.section	.bss.u16numberOfADCLowWeightSamples,"aw",%nobits
+ 201              		.align	1
+ 204              	u16numberOfADCLowWeightSamples:
+ 205 0000 0000     		.space	2
+ 206              		.section	.data.bFirstRun,"aw",%progbits
+ 209              	bFirstRun:
+ 210 0000 01       		.byte	1
+ 211              		.section	.text.FSMStateController,"ax",%progbits
+ 212              		.align	1
+ 213              		.global	FSMStateController
+ 214              		.syntax unified
+ 215              		.thumb
+ 216              		.thumb_func
+ 217              		.fpu fpv4-sp-d16
+ 219              	FSMStateController:
+ 220              	.LFB124:
+ 221              		.file 1 "Src/BalanceFSM.c"
+   1:Src/BalanceFSM.c **** /*
+ARM GAS  /tmp/cc0JlP6E.s 			page 4
+
+
+   2:Src/BalanceFSM.c ****  * BalanceFSM.c
+   3:Src/BalanceFSM.c ****  *
+   4:Src/BalanceFSM.c ****  *  Created on: Mar 18, 2018
+   5:Src/BalanceFSM.c ****  *      Author: Albatross Electronics
+   6:Src/BalanceFSM.c ****  */
+   7:Src/BalanceFSM.c **** 
+   8:Src/BalanceFSM.c **** #include "BalanceFSM.h"
+   9:Src/BalanceFSM.c **** 
+  10:Src/BalanceFSM.c **** // Controls the state of the MCU. Will always start at the initialization state
+  11:Src/BalanceFSM.c **** FSMState currentState = Initializing;
+  12:Src/BalanceFSM.c **** 
+  13:Src/BalanceFSM.c **** //Controls what the FSM controller will switch the current state to next
+  14:Src/BalanceFSM.c **** FSMState nextState = Initializing;
+  15:Src/BalanceFSM.c **** 
+  16:Src/BalanceFSM.c **** //The most recent values read from each of the ADC channels
+  17:Src/BalanceFSM.c **** static volatile uint32_t u32ADC1Channel1Value = 1;
+  18:Src/BalanceFSM.c **** static volatile uint32_t u32ADC1Channel2Value = 1;
+  19:Src/BalanceFSM.c **** static volatile uint32_t u32ADC2Value = 1;
+  20:Src/BalanceFSM.c **** static volatile uint32_t u32ADC3Value = 1;
+  21:Src/BalanceFSM.c **** 
+  22:Src/BalanceFSM.c **** //5 times the weight of just a piece of plywood sitting on the sensors.  This requires
+  23:Src/BalanceFSM.c **** //that no weight is on the scale at startup
+  24:Src/BalanceFSM.c **** static volatile uint32_t u32ADC1Channel1ValueNoWeightThreshold;
+  25:Src/BalanceFSM.c **** static volatile uint32_t u32ADC1Channel2ValueNoWeightThreshold;
+  26:Src/BalanceFSM.c **** static volatile uint32_t u32ADC2ValueNoWeightThreshold;
+  27:Src/BalanceFSM.c **** static volatile uint32_t u32ADC3ValueNoWeightThreshold;
+  28:Src/BalanceFSM.c **** 
+  29:Src/BalanceFSM.c **** //These values are for when no weight is on the scales
+  30:Src/BalanceFSM.c **** static volatile uint32_t u32ADC1Channel1Zero;
+  31:Src/BalanceFSM.c **** static volatile uint32_t u32ADC1Channel2Zero;
+  32:Src/BalanceFSM.c **** static volatile uint32_t u32ADC2Zero;
+  33:Src/BalanceFSM.c **** static volatile uint32_t u32ADC3Zero;
+  34:Src/BalanceFSM.c **** 
+  35:Src/BalanceFSM.c **** //Handles for the ADCs
+  36:Src/BalanceFSM.c **** extern ADC_HandleTypeDef hadc1;
+  37:Src/BalanceFSM.c **** extern ADC_HandleTypeDef hadc2;
+  38:Src/BalanceFSM.c **** extern ADC_HandleTypeDef hadc3;
+  39:Src/BalanceFSM.c **** 
+  40:Src/BalanceFSM.c **** //Handles for the uarts.  Uart1 is connected to the BLE module
+  41:Src/BalanceFSM.c **** extern UART_HandleTypeDef huart1;
+  42:Src/BalanceFSM.c **** //extern UART_HandleTypeDef huart3;
+  43:Src/BalanceFSM.c **** 
+  44:Src/BalanceFSM.c **** //Since ADC1 must read two channels, this boolean helps tell if the ADC has run through both
+  45:Src/BalanceFSM.c **** //of them
+  46:Src/BalanceFSM.c **** static volatile boolean bIsThisFirstChannelADC1;
+  47:Src/BalanceFSM.c **** 
+  48:Src/BalanceFSM.c **** //Will become true when the BLE module is connected to an android device
+  49:Src/BalanceFSM.c **** static volatile boolean bIsBLEConnected = true;
+  50:Src/BalanceFSM.c **** 
+  51:Src/BalanceFSM.c **** //Contains the number of samples specified by ADC_SAMPLES_LIMIT
+  52:Src/BalanceFSM.c **** //These values are averaged to determine the average ADC value over this time
+  53:Src/BalanceFSM.c **** static volatile uint32_t au32ADC1Channel1Samples[ADC_SAMPLES_LIMIT];
+  54:Src/BalanceFSM.c **** static volatile uint32_t au32ADC1Channel2Samples[ADC_SAMPLES_LIMIT];
+  55:Src/BalanceFSM.c **** static volatile uint32_t au32ADC2Samples[ADC_SAMPLES_LIMIT];
+  56:Src/BalanceFSM.c **** static volatile uint32_t au32ADC3Samples[ADC_SAMPLES_LIMIT];
+  57:Src/BalanceFSM.c **** 
+  58:Src/BalanceFSM.c **** //The average value of the ADC over the number of samples specified by ADC_SAMPLES_LIMIT
+ARM GAS  /tmp/cc0JlP6E.s 			page 5
+
+
+  59:Src/BalanceFSM.c **** static volatile uint32_t u32AvgADC1Channel1 = 0;
+  60:Src/BalanceFSM.c **** static volatile uint32_t u32AvgADC1Channel2 = 0;
+  61:Src/BalanceFSM.c **** static volatile uint32_t u32AvgADC2 = 0;
+  62:Src/BalanceFSM.c **** static volatile uint32_t u32AvgADC3 = 0;
+  63:Src/BalanceFSM.c **** static volatile uint32_t u32AvgOverall = 0;
+  64:Src/BalanceFSM.c **** 
+  65:Src/BalanceFSM.c **** //These determine the percentage of the user's weight placed on each sensor
+  66:Src/BalanceFSM.c **** volatile uint8_t u8LeftFrontPercent = 25;
+  67:Src/BalanceFSM.c **** volatile uint8_t u8LeftBackPercent = 25;
+  68:Src/BalanceFSM.c **** volatile uint8_t u8RightFrontPercent = 25;
+  69:Src/BalanceFSM.c **** volatile uint8_t u8RightBackPercent = 25;
+  70:Src/BalanceFSM.c **** 
+  71:Src/BalanceFSM.c **** //This contains the message sent from the Android device to the BLE module
+  72:Src/BalanceFSM.c **** static volatile uint8_t* au8UartReceivedMessage;
+  73:Src/BalanceFSM.c **** static volatile uint8_t u8UartReceiveIndex;
+  74:Src/BalanceFSM.c **** //static volatile uint8_t* u8UartCurrentPosition;
+  75:Src/BalanceFSM.c **** 
+  76:Src/BalanceFSM.c **** static uint16_t u16numberOfADCLowWeightSamples = 0;
+  77:Src/BalanceFSM.c **** 
+  78:Src/BalanceFSM.c **** static boolean bFirstRun = true;
+  79:Src/BalanceFSM.c **** 
+  80:Src/BalanceFSM.c **** 
+  81:Src/BalanceFSM.c **** ////Start the UART interrupt
+  82:Src/BalanceFSM.c **** //__HAL_UART_ENABLE_IT(&huart1,UART_IT_RXNE);
+  83:Src/BalanceFSM.c **** 
+  84:Src/BalanceFSM.c **** //Controls the current state of the FSM
+  85:Src/BalanceFSM.c **** void FSMStateController()
+  86:Src/BalanceFSM.c **** {
+ 222              		.loc 1 86 0
+ 223              		.cfi_startproc
+ 224              		@ args = 0, pretend = 0, frame = 0
+ 225              		@ frame_needed = 1, uses_anonymous_args = 0
+ 226 0000 80B5     		push	{r7, lr}
+ 227              	.LCFI0:
+ 228              		.cfi_def_cfa_offset 8
+ 229              		.cfi_offset 7, -8
+ 230              		.cfi_offset 14, -4
+ 231 0002 00AF     		add	r7, sp, #0
+ 232              	.LCFI1:
+ 233              		.cfi_def_cfa_register 7
+  87:Src/BalanceFSM.c **** 	switch(nextState)
+ 234              		.loc 1 87 0
+ 235 0004 6C4B     		ldr	r3, .L12
+ 236 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 237 0008 052B     		cmp	r3, #5
+ 238 000a 00F2D380 		bhi	.L11
+ 239 000e 01A2     		adr	r2, .L4
+ 240 0010 52F823F0 		ldr	pc, [r2, r3, lsl #2]
+ 241              		.p2align 2
+ 242              	.L4:
+ 243 0014 2D000000 		.word	.L3+1
+ 244 0018 61000000 		.word	.L5+1
+ 245 001c E5000000 		.word	.L6+1
+ 246 0020 19010000 		.word	.L7+1
+ 247 0024 4D010000 		.word	.L8+1
+ 248 0028 81010000 		.word	.L9+1
+ 249              		.p2align 1
+ARM GAS  /tmp/cc0JlP6E.s 			page 6
+
+
+ 250              	.L3:
+  88:Src/BalanceFSM.c **** 	{
+  89:Src/BalanceFSM.c **** 		case Initializing:
+  90:Src/BalanceFSM.c **** 
+  91:Src/BalanceFSM.c **** 			HAL_GPIO_WritePin(LED_4_GPIO_Port, LED_4_Pin, GPIO_PIN_SET);
+ 251              		.loc 1 91 0
+ 252 002c 0122     		movs	r2, #1
+ 253 002e 0221     		movs	r1, #2
+ 254 0030 6248     		ldr	r0, .L12+4
+ 255 0032 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  92:Src/BalanceFSM.c **** 			HAL_GPIO_WritePin(LED_3_GPIO_Port, LED_3_Pin, GPIO_PIN_RESET);
+ 256              		.loc 1 92 0
+ 257 0036 0022     		movs	r2, #0
+ 258 0038 0121     		movs	r1, #1
+ 259 003a 6048     		ldr	r0, .L12+4
+ 260 003c FFF7FEFF 		bl	HAL_GPIO_WritePin
+  93:Src/BalanceFSM.c **** 			HAL_GPIO_WritePin(LED_2_GPIO_Port, LED_2_Pin, GPIO_PIN_RESET);
+ 261              		.loc 1 93 0
+ 262 0040 0022     		movs	r2, #0
+ 263 0042 4FF40071 		mov	r1, #512
+ 264 0046 5E48     		ldr	r0, .L12+8
+ 265 0048 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  94:Src/BalanceFSM.c **** 			HAL_GPIO_WritePin(LED_1_GPIO_Port, LED_1_Pin, GPIO_PIN_RESET);
+ 266              		.loc 1 94 0
+ 267 004c 0022     		movs	r2, #0
+ 268 004e 4FF48071 		mov	r1, #256
+ 269 0052 5B48     		ldr	r0, .L12+8
+ 270 0054 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  95:Src/BalanceFSM.c **** 
+  96:Src/BalanceFSM.c **** 			currentState = Initializing;
+ 271              		.loc 1 96 0
+ 272 0058 5A4B     		ldr	r3, .L12+12
+ 273 005a 0022     		movs	r2, #0
+ 274 005c 1A70     		strb	r2, [r3]
+  97:Src/BalanceFSM.c **** 
+  98:Src/BalanceFSM.c **** 		break;
+ 275              		.loc 1 98 0
+ 276 005e A9E0     		b	.L2
+ 277              	.L5:
+  99:Src/BalanceFSM.c **** 
+ 100:Src/BalanceFSM.c **** 		case WaitForAndroidAndWeight:
+ 101:Src/BalanceFSM.c **** 
+ 102:Src/BalanceFSM.c **** 			//In initializing, the values with no weight are read into the the ADC values
+ 103:Src/BalanceFSM.c **** 			//so they need to be moved to the correct variables, and are muliplied by
+ 104:Src/BalanceFSM.c **** 			//1.1 so the device will only start sending data once the user puts significant
+ 105:Src/BalanceFSM.c **** 			//weight on the sensor.  Also these zero values are stored for later comparison
+ 106:Src/BalanceFSM.c **** 			if(currentState == Initializing)
+ 278              		.loc 1 106 0
+ 279 0060 584B     		ldr	r3, .L12+12
+ 280 0062 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 281 0064 002B     		cmp	r3, #0
+ 282 0066 23D1     		bne	.L10
+ 107:Src/BalanceFSM.c **** 			{
+ 108:Src/BalanceFSM.c **** 					u32ADC1Channel1Zero = u32ADC1Channel1Value;
+ 283              		.loc 1 108 0
+ 284 0068 574B     		ldr	r3, .L12+16
+ 285 006a 1B68     		ldr	r3, [r3]
+ARM GAS  /tmp/cc0JlP6E.s 			page 7
+
+
+ 286 006c 574A     		ldr	r2, .L12+20
+ 287 006e 1360     		str	r3, [r2]
+ 109:Src/BalanceFSM.c **** 					u32ADC1Channel2Zero = u32ADC1Channel2Value;
+ 288              		.loc 1 109 0
+ 289 0070 574B     		ldr	r3, .L12+24
+ 290 0072 1B68     		ldr	r3, [r3]
+ 291 0074 574A     		ldr	r2, .L12+28
+ 292 0076 1360     		str	r3, [r2]
+ 110:Src/BalanceFSM.c **** 					u32ADC2Zero = u32ADC2Value;
+ 293              		.loc 1 110 0
+ 294 0078 574B     		ldr	r3, .L12+32
+ 295 007a 1B68     		ldr	r3, [r3]
+ 296 007c 574A     		ldr	r2, .L12+36
+ 297 007e 1360     		str	r3, [r2]
+ 111:Src/BalanceFSM.c **** 					u32ADC3Zero = u32ADC3Value;
+ 298              		.loc 1 111 0
+ 299 0080 574B     		ldr	r3, .L12+40
+ 300 0082 1B68     		ldr	r3, [r3]
+ 301 0084 574A     		ldr	r2, .L12+44
+ 302 0086 1360     		str	r3, [r2]
+ 112:Src/BalanceFSM.c **** 					u32ADC1Channel1ValueNoWeightThreshold = u32ADC1Channel1Value + THRESHOLD_WEIGHT;
+ 303              		.loc 1 112 0
+ 304 0088 4F4B     		ldr	r3, .L12+16
+ 305 008a 1B68     		ldr	r3, [r3]
+ 306 008c C833     		adds	r3, r3, #200
+ 307 008e 564A     		ldr	r2, .L12+48
+ 308 0090 1360     		str	r3, [r2]
+ 113:Src/BalanceFSM.c **** 					u32ADC1Channel2ValueNoWeightThreshold = u32ADC1Channel2Value + THRESHOLD_WEIGHT;
+ 309              		.loc 1 113 0
+ 310 0092 4F4B     		ldr	r3, .L12+24
+ 311 0094 1B68     		ldr	r3, [r3]
+ 312 0096 C833     		adds	r3, r3, #200
+ 313 0098 544A     		ldr	r2, .L12+52
+ 314 009a 1360     		str	r3, [r2]
+ 114:Src/BalanceFSM.c **** 					u32ADC2ValueNoWeightThreshold = u32ADC2Value + THRESHOLD_WEIGHT;
+ 315              		.loc 1 114 0
+ 316 009c 4E4B     		ldr	r3, .L12+32
+ 317 009e 1B68     		ldr	r3, [r3]
+ 318 00a0 C833     		adds	r3, r3, #200
+ 319 00a2 534A     		ldr	r2, .L12+56
+ 320 00a4 1360     		str	r3, [r2]
+ 115:Src/BalanceFSM.c **** 					u32ADC3ValueNoWeightThreshold = u32ADC3Value + THRESHOLD_WEIGHT;
+ 321              		.loc 1 115 0
+ 322 00a6 4E4B     		ldr	r3, .L12+40
+ 323 00a8 1B68     		ldr	r3, [r3]
+ 324 00aa C833     		adds	r3, r3, #200
+ 325 00ac 514A     		ldr	r2, .L12+60
+ 326 00ae 1360     		str	r3, [r2]
+ 327              	.L10:
+ 116:Src/BalanceFSM.c **** 			}
+ 117:Src/BalanceFSM.c **** 
+ 118:Src/BalanceFSM.c **** 			HAL_GPIO_WritePin(LED_4_GPIO_Port, LED_4_Pin, GPIO_PIN_RESET);
+ 328              		.loc 1 118 0
+ 329 00b0 0022     		movs	r2, #0
+ 330 00b2 0221     		movs	r1, #2
+ 331 00b4 4148     		ldr	r0, .L12+4
+ 332 00b6 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ARM GAS  /tmp/cc0JlP6E.s 			page 8
+
+
+ 119:Src/BalanceFSM.c **** 			HAL_GPIO_WritePin(LED_3_GPIO_Port, LED_3_Pin, GPIO_PIN_SET);
+ 333              		.loc 1 119 0
+ 334 00ba 0122     		movs	r2, #1
+ 335 00bc 0121     		movs	r1, #1
+ 336 00be 3F48     		ldr	r0, .L12+4
+ 337 00c0 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 120:Src/BalanceFSM.c **** 			HAL_GPIO_WritePin(LED_2_GPIO_Port, LED_2_Pin, GPIO_PIN_RESET);
+ 338              		.loc 1 120 0
+ 339 00c4 0022     		movs	r2, #0
+ 340 00c6 4FF40071 		mov	r1, #512
+ 341 00ca 3D48     		ldr	r0, .L12+8
+ 342 00cc FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 121:Src/BalanceFSM.c **** 			HAL_GPIO_WritePin(LED_1_GPIO_Port, LED_1_Pin, GPIO_PIN_RESET);
+ 343              		.loc 1 121 0
+ 344 00d0 0022     		movs	r2, #0
+ 345 00d2 4FF48071 		mov	r1, #256
+ 346 00d6 3A48     		ldr	r0, .L12+8
+ 347 00d8 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 122:Src/BalanceFSM.c **** 
+ 123:Src/BalanceFSM.c **** 			currentState = WaitForAndroidAndWeight;
+ 348              		.loc 1 123 0
+ 349 00dc 394B     		ldr	r3, .L12+12
+ 350 00de 0122     		movs	r2, #1
+ 351 00e0 1A70     		strb	r2, [r3]
+ 124:Src/BalanceFSM.c **** 		break;
+ 352              		.loc 1 124 0
+ 353 00e2 67E0     		b	.L2
+ 354              	.L6:
+ 125:Src/BalanceFSM.c **** 
+ 126:Src/BalanceFSM.c **** 		case ReadSensorData:
+ 127:Src/BalanceFSM.c **** 
+ 128:Src/BalanceFSM.c **** 			HAL_GPIO_WritePin(LED_4_GPIO_Port, LED_4_Pin, GPIO_PIN_SET);
+ 355              		.loc 1 128 0
+ 356 00e4 0122     		movs	r2, #1
+ 357 00e6 0221     		movs	r1, #2
+ 358 00e8 3448     		ldr	r0, .L12+4
+ 359 00ea FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 129:Src/BalanceFSM.c **** 			HAL_GPIO_WritePin(LED_3_GPIO_Port, LED_3_Pin, GPIO_PIN_SET);
+ 360              		.loc 1 129 0
+ 361 00ee 0122     		movs	r2, #1
+ 362 00f0 0121     		movs	r1, #1
+ 363 00f2 3248     		ldr	r0, .L12+4
+ 364 00f4 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 130:Src/BalanceFSM.c **** 			HAL_GPIO_WritePin(LED_2_GPIO_Port, LED_2_Pin, GPIO_PIN_RESET);
+ 365              		.loc 1 130 0
+ 366 00f8 0022     		movs	r2, #0
+ 367 00fa 4FF40071 		mov	r1, #512
+ 368 00fe 3048     		ldr	r0, .L12+8
+ 369 0100 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 131:Src/BalanceFSM.c **** 			HAL_GPIO_WritePin(LED_1_GPIO_Port, LED_1_Pin, GPIO_PIN_RESET);
+ 370              		.loc 1 131 0
+ 371 0104 0022     		movs	r2, #0
+ 372 0106 4FF48071 		mov	r1, #256
+ 373 010a 2D48     		ldr	r0, .L12+8
+ 374 010c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 132:Src/BalanceFSM.c **** 
+ 133:Src/BalanceFSM.c **** 			currentState = ReadSensorData;
+ARM GAS  /tmp/cc0JlP6E.s 			page 9
+
+
+ 375              		.loc 1 133 0
+ 376 0110 2C4B     		ldr	r3, .L12+12
+ 377 0112 0222     		movs	r2, #2
+ 378 0114 1A70     		strb	r2, [r3]
+ 134:Src/BalanceFSM.c **** 		break;
+ 379              		.loc 1 134 0
+ 380 0116 4DE0     		b	.L2
+ 381              	.L7:
+ 135:Src/BalanceFSM.c **** 
+ 136:Src/BalanceFSM.c **** 		case ProcessData:
+ 137:Src/BalanceFSM.c **** 			HAL_GPIO_WritePin(LED_4_GPIO_Port, LED_4_Pin, GPIO_PIN_RESET);
+ 382              		.loc 1 137 0
+ 383 0118 0022     		movs	r2, #0
+ 384 011a 0221     		movs	r1, #2
+ 385 011c 2748     		ldr	r0, .L12+4
+ 386 011e FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 138:Src/BalanceFSM.c **** 			HAL_GPIO_WritePin(LED_3_GPIO_Port, LED_3_Pin, GPIO_PIN_RESET);
+ 387              		.loc 1 138 0
+ 388 0122 0022     		movs	r2, #0
+ 389 0124 0121     		movs	r1, #1
+ 390 0126 2548     		ldr	r0, .L12+4
+ 391 0128 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 139:Src/BalanceFSM.c **** 			HAL_GPIO_WritePin(LED_2_GPIO_Port, LED_2_Pin, GPIO_PIN_SET);
+ 392              		.loc 1 139 0
+ 393 012c 0122     		movs	r2, #1
+ 394 012e 4FF40071 		mov	r1, #512
+ 395 0132 2348     		ldr	r0, .L12+8
+ 396 0134 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 140:Src/BalanceFSM.c **** 			HAL_GPIO_WritePin(LED_1_GPIO_Port, LED_1_Pin, GPIO_PIN_RESET);
+ 397              		.loc 1 140 0
+ 398 0138 0022     		movs	r2, #0
+ 399 013a 4FF48071 		mov	r1, #256
+ 400 013e 2048     		ldr	r0, .L12+8
+ 401 0140 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 141:Src/BalanceFSM.c **** 
+ 142:Src/BalanceFSM.c **** 			currentState = ProcessData;
+ 402              		.loc 1 142 0
+ 403 0144 1F4B     		ldr	r3, .L12+12
+ 404 0146 0322     		movs	r2, #3
+ 405 0148 1A70     		strb	r2, [r3]
+ 143:Src/BalanceFSM.c **** 		break;
+ 406              		.loc 1 143 0
+ 407 014a 33E0     		b	.L2
+ 408              	.L8:
+ 144:Src/BalanceFSM.c **** 
+ 145:Src/BalanceFSM.c **** 		case SendBluetoothData:
+ 146:Src/BalanceFSM.c **** 
+ 147:Src/BalanceFSM.c **** 			HAL_GPIO_WritePin(LED_4_GPIO_Port, LED_4_Pin, GPIO_PIN_SET);
+ 409              		.loc 1 147 0
+ 410 014c 0122     		movs	r2, #1
+ 411 014e 0221     		movs	r1, #2
+ 412 0150 1A48     		ldr	r0, .L12+4
+ 413 0152 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 148:Src/BalanceFSM.c **** 			HAL_GPIO_WritePin(LED_3_GPIO_Port, LED_3_Pin, GPIO_PIN_RESET);
+ 414              		.loc 1 148 0
+ 415 0156 0022     		movs	r2, #0
+ 416 0158 0121     		movs	r1, #1
+ARM GAS  /tmp/cc0JlP6E.s 			page 10
+
+
+ 417 015a 1848     		ldr	r0, .L12+4
+ 418 015c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 149:Src/BalanceFSM.c **** 			HAL_GPIO_WritePin(LED_2_GPIO_Port, LED_2_Pin, GPIO_PIN_SET);
+ 419              		.loc 1 149 0
+ 420 0160 0122     		movs	r2, #1
+ 421 0162 4FF40071 		mov	r1, #512
+ 422 0166 1648     		ldr	r0, .L12+8
+ 423 0168 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 150:Src/BalanceFSM.c **** 			HAL_GPIO_WritePin(LED_1_GPIO_Port, LED_1_Pin, GPIO_PIN_RESET);
+ 424              		.loc 1 150 0
+ 425 016c 0022     		movs	r2, #0
+ 426 016e 4FF48071 		mov	r1, #256
+ 427 0172 1348     		ldr	r0, .L12+8
+ 428 0174 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 151:Src/BalanceFSM.c **** 
+ 152:Src/BalanceFSM.c **** 			currentState = SendBluetoothData;
+ 429              		.loc 1 152 0
+ 430 0178 124B     		ldr	r3, .L12+12
+ 431 017a 0422     		movs	r2, #4
+ 432 017c 1A70     		strb	r2, [r3]
+ 153:Src/BalanceFSM.c **** 		break;
+ 433              		.loc 1 153 0
+ 434 017e 19E0     		b	.L2
+ 435              	.L9:
+ 154:Src/BalanceFSM.c **** 
+ 155:Src/BalanceFSM.c **** 		case ProgramTermination:
+ 156:Src/BalanceFSM.c **** 
+ 157:Src/BalanceFSM.c **** 			HAL_GPIO_WritePin(LED_4_GPIO_Port, LED_4_Pin, GPIO_PIN_RESET);
+ 436              		.loc 1 157 0
+ 437 0180 0022     		movs	r2, #0
+ 438 0182 0221     		movs	r1, #2
+ 439 0184 0D48     		ldr	r0, .L12+4
+ 440 0186 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 158:Src/BalanceFSM.c **** 			HAL_GPIO_WritePin(LED_3_GPIO_Port, LED_3_Pin, GPIO_PIN_SET);
+ 441              		.loc 1 158 0
+ 442 018a 0122     		movs	r2, #1
+ 443 018c 0121     		movs	r1, #1
+ 444 018e 0B48     		ldr	r0, .L12+4
+ 445 0190 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 159:Src/BalanceFSM.c **** 			HAL_GPIO_WritePin(LED_2_GPIO_Port, LED_2_Pin, GPIO_PIN_SET);
+ 446              		.loc 1 159 0
+ 447 0194 0122     		movs	r2, #1
+ 448 0196 4FF40071 		mov	r1, #512
+ 449 019a 0948     		ldr	r0, .L12+8
+ 450 019c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 160:Src/BalanceFSM.c **** 			HAL_GPIO_WritePin(LED_1_GPIO_Port, LED_1_Pin, GPIO_PIN_RESET);
+ 451              		.loc 1 160 0
+ 452 01a0 0022     		movs	r2, #0
+ 453 01a2 4FF48071 		mov	r1, #256
+ 454 01a6 0648     		ldr	r0, .L12+8
+ 455 01a8 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 161:Src/BalanceFSM.c **** 
+ 162:Src/BalanceFSM.c **** 			currentState = ProgramTermination;
+ 456              		.loc 1 162 0
+ 457 01ac 054B     		ldr	r3, .L12+12
+ 458 01ae 0522     		movs	r2, #5
+ 459 01b0 1A70     		strb	r2, [r3]
+ARM GAS  /tmp/cc0JlP6E.s 			page 11
+
+
+ 163:Src/BalanceFSM.c **** 		break;
+ 460              		.loc 1 163 0
+ 461 01b2 00BF     		nop
+ 462              	.L2:
+ 463              	.L11:
+ 164:Src/BalanceFSM.c **** 	}
+ 165:Src/BalanceFSM.c **** 
+ 166:Src/BalanceFSM.c **** }
+ 464              		.loc 1 166 0
+ 465 01b4 00BF     		nop
+ 466 01b6 80BD     		pop	{r7, pc}
+ 467              	.L13:
+ 468              		.align	2
+ 469              	.L12:
+ 470 01b8 00000000 		.word	nextState
+ 471 01bc 00100240 		.word	1073876992
+ 472 01c0 00040240 		.word	1073873920
+ 473 01c4 00000000 		.word	currentState
+ 474 01c8 00000000 		.word	u32ADC1Channel1Value
+ 475 01cc 00000000 		.word	u32ADC1Channel1Zero
+ 476 01d0 00000000 		.word	u32ADC1Channel2Value
+ 477 01d4 00000000 		.word	u32ADC1Channel2Zero
+ 478 01d8 00000000 		.word	u32ADC2Value
+ 479 01dc 00000000 		.word	u32ADC2Zero
+ 480 01e0 00000000 		.word	u32ADC3Value
+ 481 01e4 00000000 		.word	u32ADC3Zero
+ 482 01e8 00000000 		.word	u32ADC1Channel1ValueNoWeightThreshold
+ 483 01ec 00000000 		.word	u32ADC1Channel2ValueNoWeightThreshold
+ 484 01f0 00000000 		.word	u32ADC2ValueNoWeightThreshold
+ 485 01f4 00000000 		.word	u32ADC3ValueNoWeightThreshold
+ 486              		.cfi_endproc
+ 487              	.LFE124:
+ 489              		.section	.text.FSMInitializing,"ax",%progbits
+ 490              		.align	1
+ 491              		.global	FSMInitializing
+ 492              		.syntax unified
+ 493              		.thumb
+ 494              		.thumb_func
+ 495              		.fpu fpv4-sp-d16
+ 497              	FSMInitializing:
+ 498              	.LFB125:
+ 167:Src/BalanceFSM.c **** 
+ 168:Src/BalanceFSM.c **** void FSMInitializing()
+ 169:Src/BalanceFSM.c **** {
+ 499              		.loc 1 169 0
+ 500              		.cfi_startproc
+ 501              		@ args = 0, pretend = 0, frame = 8
+ 502              		@ frame_needed = 1, uses_anonymous_args = 0
+ 503 0000 80B5     		push	{r7, lr}
+ 504              	.LCFI2:
+ 505              		.cfi_def_cfa_offset 8
+ 506              		.cfi_offset 7, -8
+ 507              		.cfi_offset 14, -4
+ 508 0002 82B0     		sub	sp, sp, #8
+ 509              	.LCFI3:
+ 510              		.cfi_def_cfa_offset 16
+ 511 0004 00AF     		add	r7, sp, #0
+ARM GAS  /tmp/cc0JlP6E.s 			page 12
+
+
+ 512              	.LCFI4:
+ 513              		.cfi_def_cfa_register 7
+ 170:Src/BalanceFSM.c **** 	if(currentState == Initializing)
+ 514              		.loc 1 170 0
+ 515 0006 1D4B     		ldr	r3, .L18
+ 516 0008 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 517 000a 002B     		cmp	r3, #0
+ 518 000c 31D1     		bne	.L17
+ 171:Src/BalanceFSM.c **** 	{
+ 172:Src/BalanceFSM.c **** 
+ 173:Src/BalanceFSM.c **** 		//Set up UART received message interrupt
+ 174:Src/BalanceFSM.c **** 		bIsBLEConnected = true;
+ 519              		.loc 1 174 0
+ 520 000e 1C4B     		ldr	r3, .L18+4
+ 521 0010 0122     		movs	r2, #1
+ 522 0012 1A70     		strb	r2, [r3]
+ 175:Src/BalanceFSM.c **** 
+ 176:Src/BalanceFSM.c **** 		//Wait one second to make sure everything is initialized properly
+ 177:Src/BalanceFSM.c **** 		HAL_Delay(5000);
+ 523              		.loc 1 177 0
+ 524 0014 41F28830 		movw	r0, #5000
+ 525 0018 FFF7FEFF 		bl	HAL_Delay
+ 178:Src/BalanceFSM.c **** 
+ 179:Src/BalanceFSM.c **** 		//Transmit 3 $ chars to the board with 200 ms between
+ 180:Src/BalanceFSM.c **** 		if(bFirstRun == true)
+ 526              		.loc 1 180 0
+ 527 001c 194B     		ldr	r3, .L18+8
+ 528 001e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 529 0020 012B     		cmp	r3, #1
+ 530 0022 1ED1     		bne	.L16
+ 531              	.LBB2:
+ 181:Src/BalanceFSM.c **** 		{
+ 182:Src/BalanceFSM.c **** 			bFirstRun = false;
+ 532              		.loc 1 182 0
+ 533 0024 174B     		ldr	r3, .L18+8
+ 534 0026 0022     		movs	r2, #0
+ 535 0028 1A70     		strb	r2, [r3]
+ 183:Src/BalanceFSM.c **** 			uint8_t au8dollar[] = {'$'};
+ 536              		.loc 1 183 0
+ 537 002a 2423     		movs	r3, #36
+ 538 002c 3B71     		strb	r3, [r7, #4]
+ 184:Src/BalanceFSM.c **** 
+ 185:Src/BalanceFSM.c **** 			HAL_UART_Transmit(&huart1, au8dollar, 1, 100);
+ 539              		.loc 1 185 0
+ 540 002e 391D     		adds	r1, r7, #4
+ 541 0030 6423     		movs	r3, #100
+ 542 0032 0122     		movs	r2, #1
+ 543 0034 1448     		ldr	r0, .L18+12
+ 544 0036 FFF7FEFF 		bl	HAL_UART_Transmit
+ 186:Src/BalanceFSM.c **** 			HAL_Delay(1000);
+ 545              		.loc 1 186 0
+ 546 003a 4FF47A70 		mov	r0, #1000
+ 547 003e FFF7FEFF 		bl	HAL_Delay
+ 187:Src/BalanceFSM.c **** 			HAL_UART_Transmit(&huart1, au8dollar, 1, 100);
+ 548              		.loc 1 187 0
+ 549 0042 391D     		adds	r1, r7, #4
+ 550 0044 6423     		movs	r3, #100
+ARM GAS  /tmp/cc0JlP6E.s 			page 13
+
+
+ 551 0046 0122     		movs	r2, #1
+ 552 0048 0F48     		ldr	r0, .L18+12
+ 553 004a FFF7FEFF 		bl	HAL_UART_Transmit
+ 188:Src/BalanceFSM.c **** 			HAL_UART_Transmit(&huart1, au8dollar, 1, 100);
+ 554              		.loc 1 188 0
+ 555 004e 391D     		adds	r1, r7, #4
+ 556 0050 6423     		movs	r3, #100
+ 557 0052 0122     		movs	r2, #1
+ 558 0054 0C48     		ldr	r0, .L18+12
+ 559 0056 FFF7FEFF 		bl	HAL_UART_Transmit
+ 189:Src/BalanceFSM.c **** 			HAL_Delay(1000);
+ 560              		.loc 1 189 0
+ 561 005a 4FF47A70 		mov	r0, #1000
+ 562 005e FFF7FEFF 		bl	HAL_Delay
+ 563              	.L16:
+ 564              	.LBE2:
+ 190:Src/BalanceFSM.c **** 		}
+ 191:Src/BalanceFSM.c **** 		//Runs the ADCs to get the value that each sensor experiences with no weight
+ 192:Src/BalanceFSM.c **** 		RunADCs();
+ 565              		.loc 1 192 0
+ 566 0062 FFF7FEFF 		bl	RunADCs
+ 193:Src/BalanceFSM.c **** 
+ 194:Src/BalanceFSM.c **** 		//Allow the ADCs to run
+ 195:Src/BalanceFSM.c **** 		HAL_Delay(2);
+ 567              		.loc 1 195 0
+ 568 0066 0220     		movs	r0, #2
+ 569 0068 FFF7FEFF 		bl	HAL_Delay
+ 196:Src/BalanceFSM.c **** 
+ 197:Src/BalanceFSM.c **** 		//The ADCs only need to run once for a baseline
+ 198:Src/BalanceFSM.c **** 		nextState = WaitForAndroidAndWeight;
+ 570              		.loc 1 198 0
+ 571 006c 074B     		ldr	r3, .L18+16
+ 572 006e 0122     		movs	r2, #1
+ 573 0070 1A70     		strb	r2, [r3]
+ 574              	.L17:
+ 199:Src/BalanceFSM.c **** 
+ 200:Src/BalanceFSM.c **** 	}
+ 201:Src/BalanceFSM.c **** }
+ 575              		.loc 1 201 0
+ 576 0072 00BF     		nop
+ 577 0074 0837     		adds	r7, r7, #8
+ 578              	.LCFI5:
+ 579              		.cfi_def_cfa_offset 8
+ 580 0076 BD46     		mov	sp, r7
+ 581              	.LCFI6:
+ 582              		.cfi_def_cfa_register 13
+ 583              		@ sp needed
+ 584 0078 80BD     		pop	{r7, pc}
+ 585              	.L19:
+ 586 007a 00BF     		.align	2
+ 587              	.L18:
+ 588 007c 00000000 		.word	currentState
+ 589 0080 00000000 		.word	bIsBLEConnected
+ 590 0084 00000000 		.word	bFirstRun
+ 591 0088 00000000 		.word	huart1
+ 592 008c 00000000 		.word	nextState
+ 593              		.cfi_endproc
+ARM GAS  /tmp/cc0JlP6E.s 			page 14
+
+
+ 594              	.LFE125:
+ 596              		.section	.text.FSMWaitForAndroidAndWeight,"ax",%progbits
+ 597              		.align	1
+ 598              		.global	FSMWaitForAndroidAndWeight
+ 599              		.syntax unified
+ 600              		.thumb
+ 601              		.thumb_func
+ 602              		.fpu fpv4-sp-d16
+ 604              	FSMWaitForAndroidAndWeight:
+ 605              	.LFB126:
+ 202:Src/BalanceFSM.c **** void FSMWaitForAndroidAndWeight()
+ 203:Src/BalanceFSM.c **** {
+ 606              		.loc 1 203 0
+ 607              		.cfi_startproc
+ 608              		@ args = 0, pretend = 0, frame = 0
+ 609              		@ frame_needed = 1, uses_anonymous_args = 0
+ 610 0000 80B5     		push	{r7, lr}
+ 611              	.LCFI7:
+ 612              		.cfi_def_cfa_offset 8
+ 613              		.cfi_offset 7, -8
+ 614              		.cfi_offset 14, -4
+ 615 0002 00AF     		add	r7, sp, #0
+ 616              	.LCFI8:
+ 617              		.cfi_def_cfa_register 7
+ 204:Src/BalanceFSM.c **** 	if(currentState == WaitForAndroidAndWeight)
+ 618              		.loc 1 204 0
+ 619 0004 124B     		ldr	r3, .L24
+ 620 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 621 0008 012B     		cmp	r3, #1
+ 622 000a 1FD1     		bne	.L23
+ 205:Src/BalanceFSM.c **** 	{
+ 206:Src/BalanceFSM.c **** 		//TALK TO NATHAN AND BOBO ABOUT CONNECTING TO ANDROID
+ 207:Src/BalanceFSM.c **** 
+ 208:Src/BalanceFSM.c **** 		//Delay for 2 ms to ensure that the ADCs can get a sample
+ 209:Src/BalanceFSM.c **** 		RunADCs();
+ 623              		.loc 1 209 0
+ 624 000c FFF7FEFF 		bl	RunADCs
+ 210:Src/BalanceFSM.c **** 		HAL_Delay(2);
+ 625              		.loc 1 210 0
+ 626 0010 0220     		movs	r0, #2
+ 627 0012 FFF7FEFF 		bl	HAL_Delay
+ 211:Src/BalanceFSM.c **** 
+ 212:Src/BalanceFSM.c **** 		//If the latest values read from the ADCs are above the threshold
+ 213:Src/BalanceFSM.c **** 		//go to the read sensor data state
+ 214:Src/BalanceFSM.c **** 		if((u32ADC1Channel1Value > u32ADC1Channel1ValueNoWeightThreshold)
+ 628              		.loc 1 214 0
+ 629 0016 0F4B     		ldr	r3, .L24+4
+ 630 0018 1A68     		ldr	r2, [r3]
+ 631 001a 0F4B     		ldr	r3, .L24+8
+ 632 001c 1B68     		ldr	r3, [r3]
+ 633 001e 9A42     		cmp	r2, r3
+ 634 0020 11D8     		bhi	.L22
+ 215:Src/BalanceFSM.c **** 				|| (u32ADC1Channel2Value > u32ADC1Channel2ValueNoWeightThreshold)
+ 635              		.loc 1 215 0
+ 636 0022 0E4B     		ldr	r3, .L24+12
+ 637 0024 1A68     		ldr	r2, [r3]
+ 638 0026 0E4B     		ldr	r3, .L24+16
+ARM GAS  /tmp/cc0JlP6E.s 			page 15
+
+
+ 639 0028 1B68     		ldr	r3, [r3]
+ 640 002a 9A42     		cmp	r2, r3
+ 641 002c 0BD8     		bhi	.L22
+ 216:Src/BalanceFSM.c **** 				|| (u32ADC2Value > u32ADC2ValueNoWeightThreshold)
+ 642              		.loc 1 216 0
+ 643 002e 0D4B     		ldr	r3, .L24+20
+ 644 0030 1A68     		ldr	r2, [r3]
+ 645 0032 0D4B     		ldr	r3, .L24+24
+ 646 0034 1B68     		ldr	r3, [r3]
+ 647 0036 9A42     		cmp	r2, r3
+ 648 0038 05D8     		bhi	.L22
+ 217:Src/BalanceFSM.c **** 				|| (u32ADC3Value > u32ADC3ValueNoWeightThreshold))
+ 649              		.loc 1 217 0
+ 650 003a 0C4B     		ldr	r3, .L24+28
+ 651 003c 1A68     		ldr	r2, [r3]
+ 652 003e 0C4B     		ldr	r3, .L24+32
+ 653 0040 1B68     		ldr	r3, [r3]
+ 654 0042 9A42     		cmp	r2, r3
+ 655 0044 02D9     		bls	.L23
+ 656              	.L22:
+ 218:Src/BalanceFSM.c **** 		{
+ 219:Src/BalanceFSM.c **** 			nextState = ReadSensorData;
+ 657              		.loc 1 219 0
+ 658 0046 0B4B     		ldr	r3, .L24+36
+ 659 0048 0222     		movs	r2, #2
+ 660 004a 1A70     		strb	r2, [r3]
+ 661              	.L23:
+ 220:Src/BalanceFSM.c **** 		}
+ 221:Src/BalanceFSM.c **** 
+ 222:Src/BalanceFSM.c **** 	}
+ 223:Src/BalanceFSM.c **** 
+ 224:Src/BalanceFSM.c **** }
+ 662              		.loc 1 224 0
+ 663 004c 00BF     		nop
+ 664 004e 80BD     		pop	{r7, pc}
+ 665              	.L25:
+ 666              		.align	2
+ 667              	.L24:
+ 668 0050 00000000 		.word	currentState
+ 669 0054 00000000 		.word	u32ADC1Channel1Value
+ 670 0058 00000000 		.word	u32ADC1Channel1ValueNoWeightThreshold
+ 671 005c 00000000 		.word	u32ADC1Channel2Value
+ 672 0060 00000000 		.word	u32ADC1Channel2ValueNoWeightThreshold
+ 673 0064 00000000 		.word	u32ADC2Value
+ 674 0068 00000000 		.word	u32ADC2ValueNoWeightThreshold
+ 675 006c 00000000 		.word	u32ADC3Value
+ 676 0070 00000000 		.word	u32ADC3ValueNoWeightThreshold
+ 677 0074 00000000 		.word	nextState
+ 678              		.cfi_endproc
+ 679              	.LFE126:
+ 681              		.section	.text.FSMReadSensorData,"ax",%progbits
+ 682              		.align	1
+ 683              		.global	FSMReadSensorData
+ 684              		.syntax unified
+ 685              		.thumb
+ 686              		.thumb_func
+ 687              		.fpu fpv4-sp-d16
+ARM GAS  /tmp/cc0JlP6E.s 			page 16
+
+
+ 689              	FSMReadSensorData:
+ 690              	.LFB127:
+ 225:Src/BalanceFSM.c **** 
+ 226:Src/BalanceFSM.c **** void FSMReadSensorData()
+ 227:Src/BalanceFSM.c **** {
+ 691              		.loc 1 227 0
+ 692              		.cfi_startproc
+ 693              		@ args = 0, pretend = 0, frame = 0
+ 694              		@ frame_needed = 1, uses_anonymous_args = 0
+ 695 0000 80B5     		push	{r7, lr}
+ 696              	.LCFI9:
+ 697              		.cfi_def_cfa_offset 8
+ 698              		.cfi_offset 7, -8
+ 699              		.cfi_offset 14, -4
+ 700 0002 00AF     		add	r7, sp, #0
+ 701              	.LCFI10:
+ 702              		.cfi_def_cfa_register 7
+ 228:Src/BalanceFSM.c **** 	if(currentState == ReadSensorData )
+ 703              		.loc 1 228 0
+ 704 0004 464B     		ldr	r3, .L38
+ 705 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 706 0008 022B     		cmp	r3, #2
+ 707 000a 40F08780 		bne	.L37
+ 708              	.LBB3:
+ 229:Src/BalanceFSM.c **** 	{
+ 230:Src/BalanceFSM.c **** 		//Tells how many ADC values have been collected by the MCU
+ 231:Src/BalanceFSM.c **** 		static volatile uint8_t u8numberOfADCSamples = 0;
+ 232:Src/BalanceFSM.c **** 
+ 233:Src/BalanceFSM.c **** 		//Delay to ensure that ADCs have run to completion
+ 234:Src/BalanceFSM.c **** 		HAL_Delay(2);
+ 709              		.loc 1 234 0
+ 710 000e 0220     		movs	r0, #2
+ 711 0010 FFF7FEFF 		bl	HAL_Delay
+ 235:Src/BalanceFSM.c **** 
+ 236:Src/BalanceFSM.c **** 		//fill the arrays containing all the samples from this set of samples with the current
+ 237:Src/BalanceFSM.c **** 		//ADC values, minus the value that they experienced with no weight. Also prevent negative
+ 238:Src/BalanceFSM.c **** 		//overflow by setting to zero if the current value is less than the zero value
+ 239:Src/BalanceFSM.c **** 		if(u32ADC1Channel1Value > u32ADC1Channel1Zero)
+ 712              		.loc 1 239 0
+ 713 0014 434B     		ldr	r3, .L38+4
+ 714 0016 1A68     		ldr	r2, [r3]
+ 715 0018 434B     		ldr	r3, .L38+8
+ 716 001a 1B68     		ldr	r3, [r3]
+ 717 001c 9A42     		cmp	r2, r3
+ 718 001e 0CD9     		bls	.L28
+ 240:Src/BalanceFSM.c **** 		{
+ 241:Src/BalanceFSM.c **** 			au32ADC1Channel1Samples[u8numberOfADCSamples] = u32ADC1Channel1Value - u32ADC1Channel1Zero;
+ 719              		.loc 1 241 0
+ 720 0020 424B     		ldr	r3, .L38+12
+ 721 0022 1B78     		ldrb	r3, [r3]
+ 722 0024 DBB2     		uxtb	r3, r3
+ 723 0026 1946     		mov	r1, r3
+ 724 0028 3E4B     		ldr	r3, .L38+4
+ 725 002a 1A68     		ldr	r2, [r3]
+ 726 002c 3E4B     		ldr	r3, .L38+8
+ 727 002e 1B68     		ldr	r3, [r3]
+ 728 0030 D31A     		subs	r3, r2, r3
+ARM GAS  /tmp/cc0JlP6E.s 			page 17
+
+
+ 729 0032 3F4A     		ldr	r2, .L38+16
+ 730 0034 42F82130 		str	r3, [r2, r1, lsl #2]
+ 731 0038 07E0     		b	.L29
+ 732              	.L28:
+ 242:Src/BalanceFSM.c **** 		}
+ 243:Src/BalanceFSM.c **** 		else
+ 244:Src/BalanceFSM.c **** 		{
+ 245:Src/BalanceFSM.c **** 			au32ADC1Channel1Samples[u8numberOfADCSamples] = 0;
+ 733              		.loc 1 245 0
+ 734 003a 3C4B     		ldr	r3, .L38+12
+ 735 003c 1B78     		ldrb	r3, [r3]
+ 736 003e DBB2     		uxtb	r3, r3
+ 737 0040 1946     		mov	r1, r3
+ 738 0042 3B4B     		ldr	r3, .L38+16
+ 739 0044 0022     		movs	r2, #0
+ 740 0046 43F82120 		str	r2, [r3, r1, lsl #2]
+ 741              	.L29:
+ 246:Src/BalanceFSM.c **** 		}
+ 247:Src/BalanceFSM.c **** 
+ 248:Src/BalanceFSM.c **** 		if(u32ADC1Channel2Value > u32ADC1Channel2Zero)
+ 742              		.loc 1 248 0
+ 743 004a 3A4B     		ldr	r3, .L38+20
+ 744 004c 1A68     		ldr	r2, [r3]
+ 745 004e 3A4B     		ldr	r3, .L38+24
+ 746 0050 1B68     		ldr	r3, [r3]
+ 747 0052 9A42     		cmp	r2, r3
+ 748 0054 0CD9     		bls	.L30
+ 249:Src/BalanceFSM.c **** 		{
+ 250:Src/BalanceFSM.c **** 			au32ADC1Channel2Samples[u8numberOfADCSamples] = u32ADC1Channel2Value - u32ADC1Channel2Zero;
+ 749              		.loc 1 250 0
+ 750 0056 354B     		ldr	r3, .L38+12
+ 751 0058 1B78     		ldrb	r3, [r3]
+ 752 005a DBB2     		uxtb	r3, r3
+ 753 005c 1946     		mov	r1, r3
+ 754 005e 354B     		ldr	r3, .L38+20
+ 755 0060 1A68     		ldr	r2, [r3]
+ 756 0062 354B     		ldr	r3, .L38+24
+ 757 0064 1B68     		ldr	r3, [r3]
+ 758 0066 D31A     		subs	r3, r2, r3
+ 759 0068 344A     		ldr	r2, .L38+28
+ 760 006a 42F82130 		str	r3, [r2, r1, lsl #2]
+ 761 006e 07E0     		b	.L31
+ 762              	.L30:
+ 251:Src/BalanceFSM.c **** 		}
+ 252:Src/BalanceFSM.c **** 		else
+ 253:Src/BalanceFSM.c **** 		{
+ 254:Src/BalanceFSM.c **** 			au32ADC1Channel2Samples[u8numberOfADCSamples] = 0;
+ 763              		.loc 1 254 0
+ 764 0070 2E4B     		ldr	r3, .L38+12
+ 765 0072 1B78     		ldrb	r3, [r3]
+ 766 0074 DBB2     		uxtb	r3, r3
+ 767 0076 1946     		mov	r1, r3
+ 768 0078 304B     		ldr	r3, .L38+28
+ 769 007a 0022     		movs	r2, #0
+ 770 007c 43F82120 		str	r2, [r3, r1, lsl #2]
+ 771              	.L31:
+ 255:Src/BalanceFSM.c **** 		}
+ARM GAS  /tmp/cc0JlP6E.s 			page 18
+
+
+ 256:Src/BalanceFSM.c **** 
+ 257:Src/BalanceFSM.c **** 		if(u32ADC2Value > u32ADC2Zero)
+ 772              		.loc 1 257 0
+ 773 0080 2F4B     		ldr	r3, .L38+32
+ 774 0082 1A68     		ldr	r2, [r3]
+ 775 0084 2F4B     		ldr	r3, .L38+36
+ 776 0086 1B68     		ldr	r3, [r3]
+ 777 0088 9A42     		cmp	r2, r3
+ 778 008a 0CD9     		bls	.L32
+ 258:Src/BalanceFSM.c **** 		{
+ 259:Src/BalanceFSM.c **** 			au32ADC2Samples[u8numberOfADCSamples] = u32ADC2Value - u32ADC2Zero;
+ 779              		.loc 1 259 0
+ 780 008c 274B     		ldr	r3, .L38+12
+ 781 008e 1B78     		ldrb	r3, [r3]
+ 782 0090 DBB2     		uxtb	r3, r3
+ 783 0092 1946     		mov	r1, r3
+ 784 0094 2A4B     		ldr	r3, .L38+32
+ 785 0096 1A68     		ldr	r2, [r3]
+ 786 0098 2A4B     		ldr	r3, .L38+36
+ 787 009a 1B68     		ldr	r3, [r3]
+ 788 009c D31A     		subs	r3, r2, r3
+ 789 009e 2A4A     		ldr	r2, .L38+40
+ 790 00a0 42F82130 		str	r3, [r2, r1, lsl #2]
+ 791 00a4 07E0     		b	.L33
+ 792              	.L32:
+ 260:Src/BalanceFSM.c **** 		}
+ 261:Src/BalanceFSM.c **** 		else
+ 262:Src/BalanceFSM.c **** 		{
+ 263:Src/BalanceFSM.c **** 			au32ADC2Samples[u8numberOfADCSamples] = 0;
+ 793              		.loc 1 263 0
+ 794 00a6 214B     		ldr	r3, .L38+12
+ 795 00a8 1B78     		ldrb	r3, [r3]
+ 796 00aa DBB2     		uxtb	r3, r3
+ 797 00ac 1946     		mov	r1, r3
+ 798 00ae 264B     		ldr	r3, .L38+40
+ 799 00b0 0022     		movs	r2, #0
+ 800 00b2 43F82120 		str	r2, [r3, r1, lsl #2]
+ 801              	.L33:
+ 264:Src/BalanceFSM.c **** 		}
+ 265:Src/BalanceFSM.c **** 
+ 266:Src/BalanceFSM.c **** 		if(u32ADC3Value > u32ADC3Zero)
+ 802              		.loc 1 266 0
+ 803 00b6 254B     		ldr	r3, .L38+44
+ 804 00b8 1A68     		ldr	r2, [r3]
+ 805 00ba 254B     		ldr	r3, .L38+48
+ 806 00bc 1B68     		ldr	r3, [r3]
+ 807 00be 9A42     		cmp	r2, r3
+ 808 00c0 0CD9     		bls	.L34
+ 267:Src/BalanceFSM.c **** 		{
+ 268:Src/BalanceFSM.c **** 			au32ADC3Samples[u8numberOfADCSamples] = u32ADC3Value - u32ADC3Zero;
+ 809              		.loc 1 268 0
+ 810 00c2 1A4B     		ldr	r3, .L38+12
+ 811 00c4 1B78     		ldrb	r3, [r3]
+ 812 00c6 DBB2     		uxtb	r3, r3
+ 813 00c8 1946     		mov	r1, r3
+ 814 00ca 204B     		ldr	r3, .L38+44
+ 815 00cc 1A68     		ldr	r2, [r3]
+ARM GAS  /tmp/cc0JlP6E.s 			page 19
+
+
+ 816 00ce 204B     		ldr	r3, .L38+48
+ 817 00d0 1B68     		ldr	r3, [r3]
+ 818 00d2 D31A     		subs	r3, r2, r3
+ 819 00d4 1F4A     		ldr	r2, .L38+52
+ 820 00d6 42F82130 		str	r3, [r2, r1, lsl #2]
+ 821 00da 07E0     		b	.L35
+ 822              	.L34:
+ 269:Src/BalanceFSM.c **** 		}
+ 270:Src/BalanceFSM.c **** 		else
+ 271:Src/BalanceFSM.c **** 		{
+ 272:Src/BalanceFSM.c **** 			au32ADC3Samples[u8numberOfADCSamples] = 0;
+ 823              		.loc 1 272 0
+ 824 00dc 134B     		ldr	r3, .L38+12
+ 825 00de 1B78     		ldrb	r3, [r3]
+ 826 00e0 DBB2     		uxtb	r3, r3
+ 827 00e2 1946     		mov	r1, r3
+ 828 00e4 1B4B     		ldr	r3, .L38+52
+ 829 00e6 0022     		movs	r2, #0
+ 830 00e8 43F82120 		str	r2, [r3, r1, lsl #2]
+ 831              	.L35:
+ 273:Src/BalanceFSM.c **** 		}
+ 274:Src/BalanceFSM.c **** 
+ 275:Src/BalanceFSM.c **** 		//Increment the sample counter
+ 276:Src/BalanceFSM.c **** 		u8numberOfADCSamples++;
+ 832              		.loc 1 276 0
+ 833 00ec 0F4B     		ldr	r3, .L38+12
+ 834 00ee 1B78     		ldrb	r3, [r3]
+ 835 00f0 DBB2     		uxtb	r3, r3
+ 836 00f2 0133     		adds	r3, r3, #1
+ 837 00f4 DAB2     		uxtb	r2, r3
+ 838 00f6 0D4B     		ldr	r3, .L38+12
+ 839 00f8 1A70     		strb	r2, [r3]
+ 277:Src/BalanceFSM.c **** 
+ 278:Src/BalanceFSM.c **** 		//If not enough samples have been taken, continue to take samples.  Otherwise, move to the
+ 279:Src/BalanceFSM.c **** 		//state that processes the data
+ 280:Src/BalanceFSM.c **** 		if(u8numberOfADCSamples < ADC_SAMPLES_LIMIT)
+ 840              		.loc 1 280 0
+ 841 00fa 0C4B     		ldr	r3, .L38+12
+ 842 00fc 1B78     		ldrb	r3, [r3]
+ 843 00fe DBB2     		uxtb	r3, r3
+ 844 0100 092B     		cmp	r3, #9
+ 845 0102 05D8     		bhi	.L36
+ 281:Src/BalanceFSM.c **** 		{
+ 282:Src/BalanceFSM.c **** 			RunADCs();
+ 846              		.loc 1 282 0
+ 847 0104 FFF7FEFF 		bl	RunADCs
+ 283:Src/BalanceFSM.c **** 			HAL_Delay(2);
+ 848              		.loc 1 283 0
+ 849 0108 0220     		movs	r0, #2
+ 850 010a FFF7FEFF 		bl	HAL_Delay
+ 851              	.LBE3:
+ 284:Src/BalanceFSM.c **** 		}
+ 285:Src/BalanceFSM.c **** 		else
+ 286:Src/BalanceFSM.c **** 		{
+ 287:Src/BalanceFSM.c **** 			u8numberOfADCSamples = 0;
+ 288:Src/BalanceFSM.c **** 			nextState = ProcessData;
+ 289:Src/BalanceFSM.c **** 		}
+ARM GAS  /tmp/cc0JlP6E.s 			page 20
+
+
+ 290:Src/BalanceFSM.c **** 
+ 291:Src/BalanceFSM.c **** 	}
+ 292:Src/BalanceFSM.c **** 
+ 293:Src/BalanceFSM.c **** }
+ 852              		.loc 1 293 0
+ 853 010e 05E0     		b	.L37
+ 854              	.L36:
+ 855              	.LBB4:
+ 287:Src/BalanceFSM.c **** 			nextState = ProcessData;
+ 856              		.loc 1 287 0
+ 857 0110 064B     		ldr	r3, .L38+12
+ 858 0112 0022     		movs	r2, #0
+ 859 0114 1A70     		strb	r2, [r3]
+ 288:Src/BalanceFSM.c **** 		}
+ 860              		.loc 1 288 0
+ 861 0116 104B     		ldr	r3, .L38+56
+ 862 0118 0322     		movs	r2, #3
+ 863 011a 1A70     		strb	r2, [r3]
+ 864              	.L37:
+ 865              	.LBE4:
+ 866              		.loc 1 293 0
+ 867 011c 00BF     		nop
+ 868 011e 80BD     		pop	{r7, pc}
+ 869              	.L39:
+ 870              		.align	2
+ 871              	.L38:
+ 872 0120 00000000 		.word	currentState
+ 873 0124 00000000 		.word	u32ADC1Channel1Value
+ 874 0128 00000000 		.word	u32ADC1Channel1Zero
+ 875 012c 00000000 		.word	u8numberOfADCSamples.8548
+ 876 0130 00000000 		.word	au32ADC1Channel1Samples
+ 877 0134 00000000 		.word	u32ADC1Channel2Value
+ 878 0138 00000000 		.word	u32ADC1Channel2Zero
+ 879 013c 00000000 		.word	au32ADC1Channel2Samples
+ 880 0140 00000000 		.word	u32ADC2Value
+ 881 0144 00000000 		.word	u32ADC2Zero
+ 882 0148 00000000 		.word	au32ADC2Samples
+ 883 014c 00000000 		.word	u32ADC3Value
+ 884 0150 00000000 		.word	u32ADC3Zero
+ 885 0154 00000000 		.word	au32ADC3Samples
+ 886 0158 00000000 		.word	nextState
+ 887              		.cfi_endproc
+ 888              	.LFE127:
+ 890              		.section	.text.FSMProcessData,"ax",%progbits
+ 891              		.align	1
+ 892              		.global	FSMProcessData
+ 893              		.syntax unified
+ 894              		.thumb
+ 895              		.thumb_func
+ 896              		.fpu fpv4-sp-d16
+ 898              	FSMProcessData:
+ 899              	.LFB128:
+ 294:Src/BalanceFSM.c **** 
+ 295:Src/BalanceFSM.c **** void FSMProcessData()
+ 296:Src/BalanceFSM.c **** {
+ 900              		.loc 1 296 0
+ 901              		.cfi_startproc
+ARM GAS  /tmp/cc0JlP6E.s 			page 21
+
+
+ 902              		@ args = 0, pretend = 0, frame = 8
+ 903              		@ frame_needed = 1, uses_anonymous_args = 0
+ 904 0000 80B5     		push	{r7, lr}
+ 905              	.LCFI11:
+ 906              		.cfi_def_cfa_offset 8
+ 907              		.cfi_offset 7, -8
+ 908              		.cfi_offset 14, -4
+ 909 0002 82B0     		sub	sp, sp, #8
+ 910              	.LCFI12:
+ 911              		.cfi_def_cfa_offset 16
+ 912 0004 00AF     		add	r7, sp, #0
+ 913              	.LCFI13:
+ 914              		.cfi_def_cfa_register 7
+ 297:Src/BalanceFSM.c **** 	if(currentState == ProcessData)
+ 915              		.loc 1 297 0
+ 916 0006 9E4B     		ldr	r3, .L61
+ 917 0008 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 918 000a 032B     		cmp	r3, #3
+ 919 000c 40F03381 		bne	.L60
+ 298:Src/BalanceFSM.c **** 	{
+ 299:Src/BalanceFSM.c **** 		//The low weight samples are below the threshold set in the initialization state.
+ 300:Src/BalanceFSM.c **** 		//If enough low weight samples are encountered, the user has stepped off of the device,
+ 301:Src/BalanceFSM.c **** 		//and we should move to the terminating program state
+ 302:Src/BalanceFSM.c **** 
+ 303:Src/BalanceFSM.c **** 
+ 304:Src/BalanceFSM.c **** 		//we are making new averages, so set the previous ones to zero
+ 305:Src/BalanceFSM.c **** 		u32AvgADC1Channel1 = 0;
+ 920              		.loc 1 305 0
+ 921 0010 9C4B     		ldr	r3, .L61+4
+ 922 0012 0022     		movs	r2, #0
+ 923 0014 1A60     		str	r2, [r3]
+ 306:Src/BalanceFSM.c **** 		u32AvgADC1Channel2 = 0;
+ 924              		.loc 1 306 0
+ 925 0016 9C4B     		ldr	r3, .L61+8
+ 926 0018 0022     		movs	r2, #0
+ 927 001a 1A60     		str	r2, [r3]
+ 307:Src/BalanceFSM.c **** 		u32AvgADC2 = 0;
+ 928              		.loc 1 307 0
+ 929 001c 9B4B     		ldr	r3, .L61+12
+ 930 001e 0022     		movs	r2, #0
+ 931 0020 1A60     		str	r2, [r3]
+ 308:Src/BalanceFSM.c **** 
+ 309:Src/BalanceFSM.c **** 		u32AvgADC3 = 0;
+ 932              		.loc 1 309 0
+ 933 0022 9B4B     		ldr	r3, .L61+16
+ 934 0024 0022     		movs	r2, #0
+ 935 0026 1A60     		str	r2, [r3]
+ 310:Src/BalanceFSM.c **** 		u32AvgOverall = 0;
+ 936              		.loc 1 310 0
+ 937 0028 9A4B     		ldr	r3, .L61+20
+ 938 002a 0022     		movs	r2, #0
+ 939 002c 1A60     		str	r2, [r3]
+ 940              	.LBB5:
+ 311:Src/BalanceFSM.c **** 
+ 312:Src/BalanceFSM.c **** 		//We are taking the average of the last ADC_SAMPLES_LIMIT samples, so we first add all of the
+ 313:Src/BalanceFSM.c **** 		//values in the array together
+ 314:Src/BalanceFSM.c **** 		for(int i = 0; i < ADC_SAMPLES_LIMIT; i++)
+ARM GAS  /tmp/cc0JlP6E.s 			page 22
+
+
+ 941              		.loc 1 314 0
+ 942 002e 0023     		movs	r3, #0
+ 943 0030 7B60     		str	r3, [r7, #4]
+ 944 0032 26E0     		b	.L42
+ 945              	.L43:
+ 315:Src/BalanceFSM.c **** 		{
+ 316:Src/BalanceFSM.c **** 			u32AvgADC1Channel1 += au32ADC1Channel1Samples[i];
+ 946              		.loc 1 316 0 discriminator 3
+ 947 0034 984A     		ldr	r2, .L61+24
+ 948 0036 7B68     		ldr	r3, [r7, #4]
+ 949 0038 52F82320 		ldr	r2, [r2, r3, lsl #2]
+ 950 003c 914B     		ldr	r3, .L61+4
+ 951 003e 1B68     		ldr	r3, [r3]
+ 952 0040 1344     		add	r3, r3, r2
+ 953 0042 904A     		ldr	r2, .L61+4
+ 954 0044 1360     		str	r3, [r2]
+ 317:Src/BalanceFSM.c **** 			u32AvgADC1Channel2 += au32ADC1Channel2Samples[i];
+ 955              		.loc 1 317 0 discriminator 3
+ 956 0046 954A     		ldr	r2, .L61+28
+ 957 0048 7B68     		ldr	r3, [r7, #4]
+ 958 004a 52F82320 		ldr	r2, [r2, r3, lsl #2]
+ 959 004e 8E4B     		ldr	r3, .L61+8
+ 960 0050 1B68     		ldr	r3, [r3]
+ 961 0052 1344     		add	r3, r3, r2
+ 962 0054 8C4A     		ldr	r2, .L61+8
+ 963 0056 1360     		str	r3, [r2]
+ 318:Src/BalanceFSM.c **** 			u32AvgADC2 += au32ADC2Samples[i];
+ 964              		.loc 1 318 0 discriminator 3
+ 965 0058 914A     		ldr	r2, .L61+32
+ 966 005a 7B68     		ldr	r3, [r7, #4]
+ 967 005c 52F82320 		ldr	r2, [r2, r3, lsl #2]
+ 968 0060 8A4B     		ldr	r3, .L61+12
+ 969 0062 1B68     		ldr	r3, [r3]
+ 970 0064 1344     		add	r3, r3, r2
+ 971 0066 894A     		ldr	r2, .L61+12
+ 972 0068 1360     		str	r3, [r2]
+ 319:Src/BalanceFSM.c **** 			u32AvgADC3 += au32ADC3Samples[i];
+ 973              		.loc 1 319 0 discriminator 3
+ 974 006a 8E4A     		ldr	r2, .L61+36
+ 975 006c 7B68     		ldr	r3, [r7, #4]
+ 976 006e 52F82320 		ldr	r2, [r2, r3, lsl #2]
+ 977 0072 874B     		ldr	r3, .L61+16
+ 978 0074 1B68     		ldr	r3, [r3]
+ 979 0076 1344     		add	r3, r3, r2
+ 980 0078 854A     		ldr	r2, .L61+16
+ 981 007a 1360     		str	r3, [r2]
+ 314:Src/BalanceFSM.c **** 		{
+ 982              		.loc 1 314 0 discriminator 3
+ 983 007c 7B68     		ldr	r3, [r7, #4]
+ 984 007e 0133     		adds	r3, r3, #1
+ 985 0080 7B60     		str	r3, [r7, #4]
+ 986              	.L42:
+ 314:Src/BalanceFSM.c **** 		{
+ 987              		.loc 1 314 0 is_stmt 0 discriminator 1
+ 988 0082 7B68     		ldr	r3, [r7, #4]
+ 989 0084 092B     		cmp	r3, #9
+ 990 0086 D5DD     		ble	.L43
+ARM GAS  /tmp/cc0JlP6E.s 			page 23
+
+
+ 991              	.LBE5:
+ 320:Src/BalanceFSM.c **** 		}
+ 321:Src/BalanceFSM.c **** 		//Then we divide by the number of samples to get the average
+ 322:Src/BalanceFSM.c **** 		u32AvgADC1Channel1 /= ADC_SAMPLES_LIMIT;
+ 992              		.loc 1 322 0 is_stmt 1
+ 993 0088 7E4B     		ldr	r3, .L61+4
+ 994 008a 1B68     		ldr	r3, [r3]
+ 995 008c 864A     		ldr	r2, .L61+40
+ 996 008e A2FB0323 		umull	r2, r3, r2, r3
+ 997 0092 DB08     		lsrs	r3, r3, #3
+ 998 0094 7B4A     		ldr	r2, .L61+4
+ 999 0096 1360     		str	r3, [r2]
+ 323:Src/BalanceFSM.c **** 		u32AvgADC1Channel2 /= ADC_SAMPLES_LIMIT;
+ 1000              		.loc 1 323 0
+ 1001 0098 7B4B     		ldr	r3, .L61+8
+ 1002 009a 1B68     		ldr	r3, [r3]
+ 1003 009c 824A     		ldr	r2, .L61+40
+ 1004 009e A2FB0323 		umull	r2, r3, r2, r3
+ 1005 00a2 DB08     		lsrs	r3, r3, #3
+ 1006 00a4 784A     		ldr	r2, .L61+8
+ 1007 00a6 1360     		str	r3, [r2]
+ 324:Src/BalanceFSM.c **** 		u32AvgADC2 /= ADC_SAMPLES_LIMIT;
+ 1008              		.loc 1 324 0
+ 1009 00a8 784B     		ldr	r3, .L61+12
+ 1010 00aa 1B68     		ldr	r3, [r3]
+ 1011 00ac 7E4A     		ldr	r2, .L61+40
+ 1012 00ae A2FB0323 		umull	r2, r3, r2, r3
+ 1013 00b2 DB08     		lsrs	r3, r3, #3
+ 1014 00b4 754A     		ldr	r2, .L61+12
+ 1015 00b6 1360     		str	r3, [r2]
+ 325:Src/BalanceFSM.c **** 		u32AvgADC3 /= ADC_SAMPLES_LIMIT;
+ 1016              		.loc 1 325 0
+ 1017 00b8 754B     		ldr	r3, .L61+16
+ 1018 00ba 1B68     		ldr	r3, [r3]
+ 1019 00bc 7A4A     		ldr	r2, .L61+40
+ 1020 00be A2FB0323 		umull	r2, r3, r2, r3
+ 1021 00c2 DB08     		lsrs	r3, r3, #3
+ 1022 00c4 724A     		ldr	r2, .L61+16
+ 1023 00c6 1360     		str	r3, [r2]
+ 326:Src/BalanceFSM.c **** 
+ 327:Src/BalanceFSM.c **** 		//This value is the total weight on the board
+ 328:Src/BalanceFSM.c **** 		u32AvgOverall = u32AvgADC1Channel1 + u32AvgADC1Channel2 + u32AvgADC2 + u32AvgADC3;
+ 1024              		.loc 1 328 0
+ 1025 00c8 6E4B     		ldr	r3, .L61+4
+ 1026 00ca 1A68     		ldr	r2, [r3]
+ 1027 00cc 6E4B     		ldr	r3, .L61+8
+ 1028 00ce 1B68     		ldr	r3, [r3]
+ 1029 00d0 1A44     		add	r2, r2, r3
+ 1030 00d2 6E4B     		ldr	r3, .L61+12
+ 1031 00d4 1B68     		ldr	r3, [r3]
+ 1032 00d6 1A44     		add	r2, r2, r3
+ 1033 00d8 6D4B     		ldr	r3, .L61+16
+ 1034 00da 1B68     		ldr	r3, [r3]
+ 1035 00dc 1344     		add	r3, r3, r2
+ 1036 00de 6D4A     		ldr	r2, .L61+20
+ 1037 00e0 1360     		str	r3, [r2]
+ 329:Src/BalanceFSM.c **** 
+ARM GAS  /tmp/cc0JlP6E.s 			page 24
+
+
+ 330:Src/BalanceFSM.c **** 		//THIS IS ASSUMING THAT ALL OF THE SENSORS WILL HAVE THE SAME VOLTAGE WEIGHT
+ 331:Src/BalanceFSM.c **** 		//SLOPE WHICH IS WHAT WE TRIED TO CREATE IN OUR CALI}BRATION
+ 332:Src/BalanceFSM.c **** 
+ 333:Src/BalanceFSM.c **** 		//As this will give the percentage of the user's weights on each quadrant
+ 334:Src/BalanceFSM.c **** 		if((u32AvgADC1Channel1 + u32AvgADC1Channel2 + u32AvgADC2 + u32AvgADC3) > MINIMUM_WEIGHT_OF_PERSON
+ 1038              		.loc 1 334 0
+ 1039 00e2 684B     		ldr	r3, .L61+4
+ 1040 00e4 1A68     		ldr	r2, [r3]
+ 1041 00e6 684B     		ldr	r3, .L61+8
+ 1042 00e8 1B68     		ldr	r3, [r3]
+ 1043 00ea 1A44     		add	r2, r2, r3
+ 1044 00ec 674B     		ldr	r3, .L61+12
+ 1045 00ee 1B68     		ldr	r3, [r3]
+ 1046 00f0 1A44     		add	r2, r2, r3
+ 1047 00f2 674B     		ldr	r3, .L61+16
+ 1048 00f4 1B68     		ldr	r3, [r3]
+ 1049 00f6 1344     		add	r3, r3, r2
+ 1050 00f8 40F2EE22 		movw	r2, #750
+ 1051 00fc 9342     		cmp	r3, r2
+ 1052 00fe 33D9     		bls	.L44
+ 335:Src/BalanceFSM.c **** 		{
+ 336:Src/BalanceFSM.c **** 				u8LeftBackPercent = ((u32AvgADC1Channel1 * 100) / u32AvgOverall); //LeftBack
+ 1053              		.loc 1 336 0
+ 1054 0100 604B     		ldr	r3, .L61+4
+ 1055 0102 1B68     		ldr	r3, [r3]
+ 1056 0104 6422     		movs	r2, #100
+ 1057 0106 02FB03F2 		mul	r2, r2, r3
+ 1058 010a 624B     		ldr	r3, .L61+20
+ 1059 010c 1B68     		ldr	r3, [r3]
+ 1060 010e B2FBF3F3 		udiv	r3, r2, r3
+ 1061 0112 DAB2     		uxtb	r2, r3
+ 1062 0114 654B     		ldr	r3, .L61+44
+ 1063 0116 1A70     		strb	r2, [r3]
+ 337:Src/BalanceFSM.c **** 				u8RightBackPercent = ((u32AvgADC1Channel2 * 100) / u32AvgOverall); //BackRight
+ 1064              		.loc 1 337 0
+ 1065 0118 5B4B     		ldr	r3, .L61+8
+ 1066 011a 1B68     		ldr	r3, [r3]
+ 1067 011c 6422     		movs	r2, #100
+ 1068 011e 02FB03F2 		mul	r2, r2, r3
+ 1069 0122 5C4B     		ldr	r3, .L61+20
+ 1070 0124 1B68     		ldr	r3, [r3]
+ 1071 0126 B2FBF3F3 		udiv	r3, r2, r3
+ 1072 012a DAB2     		uxtb	r2, r3
+ 1073 012c 604B     		ldr	r3, .L61+48
+ 1074 012e 1A70     		strb	r2, [r3]
+ 338:Src/BalanceFSM.c **** 				u8RightFrontPercent = ((u32AvgADC2 * 100) / u32AvgOverall); //RightFront
+ 1075              		.loc 1 338 0
+ 1076 0130 564B     		ldr	r3, .L61+12
+ 1077 0132 1B68     		ldr	r3, [r3]
+ 1078 0134 6422     		movs	r2, #100
+ 1079 0136 02FB03F2 		mul	r2, r2, r3
+ 1080 013a 564B     		ldr	r3, .L61+20
+ 1081 013c 1B68     		ldr	r3, [r3]
+ 1082 013e B2FBF3F3 		udiv	r3, r2, r3
+ 1083 0142 DAB2     		uxtb	r2, r3
+ 1084 0144 5B4B     		ldr	r3, .L61+52
+ 1085 0146 1A70     		strb	r2, [r3]
+ARM GAS  /tmp/cc0JlP6E.s 			page 25
+
+
+ 339:Src/BalanceFSM.c **** 				u8LeftFrontPercent = ((u32AvgADC3 * 100) / u32AvgOverall); //LeftFront
+ 1086              		.loc 1 339 0
+ 1087 0148 514B     		ldr	r3, .L61+16
+ 1088 014a 1B68     		ldr	r3, [r3]
+ 1089 014c 6422     		movs	r2, #100
+ 1090 014e 02FB03F2 		mul	r2, r2, r3
+ 1091 0152 504B     		ldr	r3, .L61+20
+ 1092 0154 1B68     		ldr	r3, [r3]
+ 1093 0156 B2FBF3F3 		udiv	r3, r2, r3
+ 1094 015a DAB2     		uxtb	r2, r3
+ 1095 015c 564B     		ldr	r3, .L61+56
+ 1096 015e 1A70     		strb	r2, [r3]
+ 340:Src/BalanceFSM.c **** 				u16numberOfADCLowWeightSamples = 0;
+ 1097              		.loc 1 340 0
+ 1098 0160 564B     		ldr	r3, .L61+60
+ 1099 0162 0022     		movs	r2, #0
+ 1100 0164 1A80     		strh	r2, [r3]	@ movhi
+ 1101 0166 11E0     		b	.L45
+ 1102              	.L44:
+ 341:Src/BalanceFSM.c **** 		}
+ 342:Src/BalanceFSM.c **** 		else
+ 343:Src/BalanceFSM.c **** 		{
+ 344:Src/BalanceFSM.c **** 				u16numberOfADCLowWeightSamples++;
+ 1103              		.loc 1 344 0
+ 1104 0168 544B     		ldr	r3, .L61+60
+ 1105 016a 1B88     		ldrh	r3, [r3]
+ 1106 016c 0133     		adds	r3, r3, #1
+ 1107 016e 9AB2     		uxth	r2, r3
+ 1108 0170 524B     		ldr	r3, .L61+60
+ 1109 0172 1A80     		strh	r2, [r3]	@ movhi
+ 345:Src/BalanceFSM.c **** 				u8LeftBackPercent = 25; //LeftFront
+ 1110              		.loc 1 345 0
+ 1111 0174 4D4B     		ldr	r3, .L61+44
+ 1112 0176 1922     		movs	r2, #25
+ 1113 0178 1A70     		strb	r2, [r3]
+ 346:Src/BalanceFSM.c **** 				u8RightBackPercent = 25; //LEFTBACK
+ 1114              		.loc 1 346 0
+ 1115 017a 4D4B     		ldr	r3, .L61+48
+ 1116 017c 1922     		movs	r2, #25
+ 1117 017e 1A70     		strb	r2, [r3]
+ 347:Src/BalanceFSM.c **** 				u8LeftFrontPercent = 25; //RIGHTFRONT
+ 1118              		.loc 1 347 0
+ 1119 0180 4D4B     		ldr	r3, .L61+56
+ 1120 0182 1922     		movs	r2, #25
+ 1121 0184 1A70     		strb	r2, [r3]
+ 348:Src/BalanceFSM.c **** 				u8RightFrontPercent = 25; //BACKRIGHT
+ 1122              		.loc 1 348 0
+ 1123 0186 4B4B     		ldr	r3, .L61+52
+ 1124 0188 1922     		movs	r2, #25
+ 1125 018a 1A70     		strb	r2, [r3]
+ 1126              	.L45:
+ 349:Src/BalanceFSM.c **** 		}
+ 350:Src/BalanceFSM.c **** 
+ 351:Src/BalanceFSM.c **** 		if(u8LeftBackPercent >= 100)
+ 1127              		.loc 1 351 0
+ 1128 018c 474B     		ldr	r3, .L61+44
+ 1129 018e 1B78     		ldrb	r3, [r3]
+ARM GAS  /tmp/cc0JlP6E.s 			page 26
+
+
+ 1130 0190 DBB2     		uxtb	r3, r3
+ 1131 0192 632B     		cmp	r3, #99
+ 1132 0194 02D9     		bls	.L46
+ 352:Src/BalanceFSM.c **** 		{
+ 353:Src/BalanceFSM.c **** 			u8LeftBackPercent = 99;
+ 1133              		.loc 1 353 0
+ 1134 0196 454B     		ldr	r3, .L61+44
+ 1135 0198 6322     		movs	r2, #99
+ 1136 019a 1A70     		strb	r2, [r3]
+ 1137              	.L46:
+ 354:Src/BalanceFSM.c **** 		}
+ 355:Src/BalanceFSM.c **** 
+ 356:Src/BalanceFSM.c **** 		if(u8LeftFrontPercent >= 100)
+ 1138              		.loc 1 356 0
+ 1139 019c 464B     		ldr	r3, .L61+56
+ 1140 019e 1B78     		ldrb	r3, [r3]
+ 1141 01a0 DBB2     		uxtb	r3, r3
+ 1142 01a2 632B     		cmp	r3, #99
+ 1143 01a4 02D9     		bls	.L47
+ 357:Src/BalanceFSM.c **** 		{
+ 358:Src/BalanceFSM.c **** 			u8LeftFrontPercent = 99;
+ 1144              		.loc 1 358 0
+ 1145 01a6 444B     		ldr	r3, .L61+56
+ 1146 01a8 6322     		movs	r2, #99
+ 1147 01aa 1A70     		strb	r2, [r3]
+ 1148              	.L47:
+ 359:Src/BalanceFSM.c **** 		}
+ 360:Src/BalanceFSM.c **** 
+ 361:Src/BalanceFSM.c **** 		if(u8RightBackPercent >= 100)
+ 1149              		.loc 1 361 0
+ 1150 01ac 404B     		ldr	r3, .L61+48
+ 1151 01ae 1B78     		ldrb	r3, [r3]
+ 1152 01b0 DBB2     		uxtb	r3, r3
+ 1153 01b2 632B     		cmp	r3, #99
+ 1154 01b4 02D9     		bls	.L48
+ 362:Src/BalanceFSM.c **** 		{
+ 363:Src/BalanceFSM.c **** 			u8RightBackPercent = 99;
+ 1155              		.loc 1 363 0
+ 1156 01b6 3E4B     		ldr	r3, .L61+48
+ 1157 01b8 6322     		movs	r2, #99
+ 1158 01ba 1A70     		strb	r2, [r3]
+ 1159              	.L48:
+ 364:Src/BalanceFSM.c **** 		}
+ 365:Src/BalanceFSM.c **** 
+ 366:Src/BalanceFSM.c **** 		if(u8RightFrontPercent >= 100)
+ 1160              		.loc 1 366 0
+ 1161 01bc 3D4B     		ldr	r3, .L61+52
+ 1162 01be 1B78     		ldrb	r3, [r3]
+ 1163 01c0 DBB2     		uxtb	r3, r3
+ 1164 01c2 632B     		cmp	r3, #99
+ 1165 01c4 02D9     		bls	.L49
+ 367:Src/BalanceFSM.c **** 		{
+ 368:Src/BalanceFSM.c **** 			u8RightFrontPercent = 99;
+ 1166              		.loc 1 368 0
+ 1167 01c6 3B4B     		ldr	r3, .L61+52
+ 1168 01c8 6322     		movs	r2, #99
+ 1169 01ca 1A70     		strb	r2, [r3]
+ARM GAS  /tmp/cc0JlP6E.s 			page 27
+
+
+ 1170              	.L49:
+ 369:Src/BalanceFSM.c **** 		}
+ 370:Src/BalanceFSM.c **** 
+ 371:Src/BalanceFSM.c **** 		//These if statements set the logic for the buzzers.  If a quadrant has more than
+ 372:Src/BalanceFSM.c **** 		//UNEVEN_WEIGHT_DIST percent of the user's weight, the buzzer in that quadrant will be
+ 373:Src/BalanceFSM.c **** 		//activated
+ 374:Src/BalanceFSM.c **** 		if(u8RightBackPercent > UNEVEN_WEIGHT_DIST)
+ 1171              		.loc 1 374 0
+ 1172 01cc 384B     		ldr	r3, .L61+48
+ 1173 01ce 1B78     		ldrb	r3, [r3]
+ 1174 01d0 DBB2     		uxtb	r3, r3
+ 1175 01d2 232B     		cmp	r3, #35
+ 1176 01d4 05D9     		bls	.L50
+ 375:Src/BalanceFSM.c **** 		{
+ 376:Src/BalanceFSM.c **** 			HAL_GPIO_WritePin(BackRightBuzz_GPIO_Port, BackRightBuzz_Pin, GPIO_PIN_SET);
+ 1177              		.loc 1 376 0
+ 1178 01d6 0122     		movs	r2, #1
+ 1179 01d8 2021     		movs	r1, #32
+ 1180 01da 3948     		ldr	r0, .L61+64
+ 1181 01dc FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 1182 01e0 04E0     		b	.L51
+ 1183              	.L50:
+ 377:Src/BalanceFSM.c **** 		}
+ 378:Src/BalanceFSM.c **** 		else
+ 379:Src/BalanceFSM.c **** 		{
+ 380:Src/BalanceFSM.c **** 			HAL_GPIO_WritePin(BackRightBuzz_GPIO_Port, BackRightBuzz_Pin, GPIO_PIN_RESET);
+ 1184              		.loc 1 380 0
+ 1185 01e2 0022     		movs	r2, #0
+ 1186 01e4 2021     		movs	r1, #32
+ 1187 01e6 3648     		ldr	r0, .L61+64
+ 1188 01e8 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 1189              	.L51:
+ 381:Src/BalanceFSM.c **** 		}
+ 382:Src/BalanceFSM.c **** 
+ 383:Src/BalanceFSM.c **** 		if(u8LeftFrontPercent > UNEVEN_WEIGHT_DIST)
+ 1190              		.loc 1 383 0
+ 1191 01ec 324B     		ldr	r3, .L61+56
+ 1192 01ee 1B78     		ldrb	r3, [r3]
+ 1193 01f0 DBB2     		uxtb	r3, r3
+ 1194 01f2 232B     		cmp	r3, #35
+ 1195 01f4 05D9     		bls	.L52
+ 384:Src/BalanceFSM.c **** 		{
+ 385:Src/BalanceFSM.c **** 			HAL_GPIO_WritePin(FrontLeftBuzz_GPIO_Port, FrontLeftBuzz_Pin, GPIO_PIN_SET);
+ 1196              		.loc 1 385 0
+ 1197 01f6 0122     		movs	r2, #1
+ 1198 01f8 0421     		movs	r1, #4
+ 1199 01fa 3248     		ldr	r0, .L61+68
+ 1200 01fc FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 1201 0200 04E0     		b	.L53
+ 1202              	.L52:
+ 386:Src/BalanceFSM.c **** 		}
+ 387:Src/BalanceFSM.c **** 		else
+ 388:Src/BalanceFSM.c **** 		{
+ 389:Src/BalanceFSM.c **** 			HAL_GPIO_WritePin(FrontLeftBuzz_GPIO_Port, FrontLeftBuzz_Pin, GPIO_PIN_RESET);
+ 1203              		.loc 1 389 0
+ 1204 0202 0022     		movs	r2, #0
+ 1205 0204 0421     		movs	r1, #4
+ARM GAS  /tmp/cc0JlP6E.s 			page 28
+
+
+ 1206 0206 2F48     		ldr	r0, .L61+68
+ 1207 0208 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 1208              	.L53:
+ 390:Src/BalanceFSM.c **** 		}
+ 391:Src/BalanceFSM.c **** 
+ 392:Src/BalanceFSM.c **** 		if(u8LeftBackPercent > UNEVEN_WEIGHT_DIST)
+ 1209              		.loc 1 392 0
+ 1210 020c 274B     		ldr	r3, .L61+44
+ 1211 020e 1B78     		ldrb	r3, [r3]
+ 1212 0210 DBB2     		uxtb	r3, r3
+ 1213 0212 232B     		cmp	r3, #35
+ 1214 0214 05D9     		bls	.L54
+ 393:Src/BalanceFSM.c **** 		{
+ 394:Src/BalanceFSM.c **** 			HAL_GPIO_WritePin(BackLeftBuzz_GPIO_Port, BackLeftBuzz_Pin, GPIO_PIN_SET);
+ 1215              		.loc 1 394 0
+ 1216 0216 0122     		movs	r2, #1
+ 1217 0218 0821     		movs	r1, #8
+ 1218 021a 2A48     		ldr	r0, .L61+68
+ 1219 021c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 1220 0220 04E0     		b	.L55
+ 1221              	.L54:
+ 395:Src/BalanceFSM.c **** 		}
+ 396:Src/BalanceFSM.c **** 		else
+ 397:Src/BalanceFSM.c **** 		{
+ 398:Src/BalanceFSM.c **** 			HAL_GPIO_WritePin(BackLeftBuzz_GPIO_Port, BackLeftBuzz_Pin, GPIO_PIN_RESET);
+ 1222              		.loc 1 398 0
+ 1223 0222 0022     		movs	r2, #0
+ 1224 0224 0821     		movs	r1, #8
+ 1225 0226 2748     		ldr	r0, .L61+68
+ 1226 0228 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 1227              	.L55:
+ 399:Src/BalanceFSM.c **** 		}
+ 400:Src/BalanceFSM.c **** 		if(u8RightFrontPercent > UNEVEN_WEIGHT_DIST)
+ 1228              		.loc 1 400 0
+ 1229 022c 214B     		ldr	r3, .L61+52
+ 1230 022e 1B78     		ldrb	r3, [r3]
+ 1231 0230 DBB2     		uxtb	r3, r3
+ 1232 0232 232B     		cmp	r3, #35
+ 1233 0234 05D9     		bls	.L56
+ 401:Src/BalanceFSM.c **** 		{
+ 402:Src/BalanceFSM.c **** 			HAL_GPIO_WritePin(FrontRightBuzz_GPIO_Port, FrontRightBuzz_Pin, GPIO_PIN_SET);
+ 1234              		.loc 1 402 0
+ 1235 0236 0122     		movs	r2, #1
+ 1236 0238 1021     		movs	r1, #16
+ 1237 023a 2148     		ldr	r0, .L61+64
+ 1238 023c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 1239 0240 04E0     		b	.L57
+ 1240              	.L56:
+ 403:Src/BalanceFSM.c **** 		}
+ 404:Src/BalanceFSM.c **** 		else
+ 405:Src/BalanceFSM.c **** 		{
+ 406:Src/BalanceFSM.c **** 			HAL_GPIO_WritePin(FrontRightBuzz_GPIO_Port, FrontRightBuzz_Pin, GPIO_PIN_RESET);
+ 1241              		.loc 1 406 0
+ 1242 0242 0022     		movs	r2, #0
+ 1243 0244 1021     		movs	r1, #16
+ 1244 0246 1E48     		ldr	r0, .L61+64
+ 1245 0248 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ARM GAS  /tmp/cc0JlP6E.s 			page 29
+
+
+ 1246              	.L57:
+ 407:Src/BalanceFSM.c **** 		}
+ 408:Src/BalanceFSM.c **** 
+ 409:Src/BalanceFSM.c **** 
+ 410:Src/BalanceFSM.c **** 
+ 411:Src/BalanceFSM.c **** 		//This logic allows us to determine how many times no weight has been detected on the
+ 412:Src/BalanceFSM.c **** 		//scale, and if we have WEIGHTED long enough to inform the Android device that the workout
+ 413:Src/BalanceFSM.c **** 		//is complete
+ 414:Src/BalanceFSM.c **** 		// if(u32ADC1Channel1Value <= u32ADC1Channel1ValueNoWeightThreshold &&
+ 415:Src/BalanceFSM.c **** 		// 		u32ADC1Channel2Value <= u32ADC1Channel2ValueNoWeightThreshold &&
+ 416:Src/BalanceFSM.c **** 		// 		u32ADC2Value <= u32ADC2ValueNoWeightThreshold &&
+ 417:Src/BalanceFSM.c **** 		// 		u32ADC3Value <= u32ADC3ValueNoWeightThreshold)
+ 418:Src/BalanceFSM.c **** 		// {
+ 419:Src/BalanceFSM.c **** 		//
+ 420:Src/BalanceFSM.c **** 		// 	HAL_GPIO_WritePin(BackLeftBuzz_GPIO_Port, BackLeftBuzz_Pin, GPIO_PIN_RESET);
+ 421:Src/BalanceFSM.c **** 		// 	HAL_GPIO_WritePin(BackRighttBuzz_GPIO_Port, BackRightBuzz_Pin, GPIO_PIN_RESET);
+ 422:Src/BalanceFSM.c **** 		// 	HAL_GPIO_WritePin(FrontLeftBuzz_GPIO_Port, FrontLeftBuzz_Pin, GPIO_PIN_RESET);
+ 423:Src/BalanceFSM.c **** 		// 	HAL_GPIO_WritePin(FrontRightBuzz_GPIO_Port, FrontRightBuzz_Pin, GPIO_PIN_RESET);
+ 424:Src/BalanceFSM.c **** 		// }
+ 425:Src/BalanceFSM.c **** 		// else
+ 426:Src/BalanceFSM.c **** 		// {
+ 427:Src/BalanceFSM.c **** 		// 	u16numberOfADCLowWeightSamples = 0;
+ 428:Src/BalanceFSM.c **** 		// }
+ 429:Src/BalanceFSM.c **** 
+ 430:Src/BalanceFSM.c **** 		//If we have enough low weight samples, terminate the program
+ 431:Src/BalanceFSM.c **** 		//If we don't have enough low weight samples, and BLE is connected, begin sending the data
+ 432:Src/BalanceFSM.c **** 		//Otherwise, just read the sensors again
+ 433:Src/BalanceFSM.c **** 		if(u16numberOfADCLowWeightSamples >= MAX_NUM_LOW_WEIGHT_SAMPLES)
+ 1247              		.loc 1 433 0
+ 1248 024c 1B4B     		ldr	r3, .L61+60
+ 1249 024e 1B88     		ldrh	r3, [r3]
+ 1250 0250 B3F5FA7F 		cmp	r3, #500
+ 1251 0254 03D3     		bcc	.L58
+ 434:Src/BalanceFSM.c **** 		{
+ 435:Src/BalanceFSM.c **** 			nextState = ProgramTermination;
+ 1252              		.loc 1 435 0
+ 1253 0256 1C4B     		ldr	r3, .L61+72
+ 1254 0258 0522     		movs	r2, #5
+ 1255 025a 1A70     		strb	r2, [r3]
+ 436:Src/BalanceFSM.c **** 		}
+ 437:Src/BalanceFSM.c **** 		else if(bIsBLEConnected)
+ 438:Src/BalanceFSM.c **** 		{
+ 439:Src/BalanceFSM.c **** 			nextState = SendBluetoothData;
+ 440:Src/BalanceFSM.c **** 		}
+ 441:Src/BalanceFSM.c **** 		else
+ 442:Src/BalanceFSM.c **** 
+ 443:Src/BalanceFSM.c **** 		{
+ 444:Src/BalanceFSM.c **** 			nextState = ReadSensorData;
+ 445:Src/BalanceFSM.c **** 		}
+ 446:Src/BalanceFSM.c **** 
+ 447:Src/BalanceFSM.c **** 	}
+ 448:Src/BalanceFSM.c **** 
+ 449:Src/BalanceFSM.c **** }
+ 1256              		.loc 1 449 0
+ 1257 025c 0BE0     		b	.L60
+ 1258              	.L58:
+ 437:Src/BalanceFSM.c **** 		{
+ARM GAS  /tmp/cc0JlP6E.s 			page 30
+
+
+ 1259              		.loc 1 437 0
+ 1260 025e 1B4B     		ldr	r3, .L61+76
+ 1261 0260 1B78     		ldrb	r3, [r3]
+ 1262 0262 DBB2     		uxtb	r3, r3
+ 1263 0264 002B     		cmp	r3, #0
+ 1264 0266 03D0     		beq	.L59
+ 439:Src/BalanceFSM.c **** 		}
+ 1265              		.loc 1 439 0
+ 1266 0268 174B     		ldr	r3, .L61+72
+ 1267 026a 0422     		movs	r2, #4
+ 1268 026c 1A70     		strb	r2, [r3]
+ 1269              		.loc 1 449 0
+ 1270 026e 02E0     		b	.L60
+ 1271              	.L59:
+ 444:Src/BalanceFSM.c **** 		}
+ 1272              		.loc 1 444 0
+ 1273 0270 154B     		ldr	r3, .L61+72
+ 1274 0272 0222     		movs	r2, #2
+ 1275 0274 1A70     		strb	r2, [r3]
+ 1276              	.L60:
+ 1277              		.loc 1 449 0
+ 1278 0276 00BF     		nop
+ 1279 0278 0837     		adds	r7, r7, #8
+ 1280              	.LCFI14:
+ 1281              		.cfi_def_cfa_offset 8
+ 1282 027a BD46     		mov	sp, r7
+ 1283              	.LCFI15:
+ 1284              		.cfi_def_cfa_register 13
+ 1285              		@ sp needed
+ 1286 027c 80BD     		pop	{r7, pc}
+ 1287              	.L62:
+ 1288 027e 00BF     		.align	2
+ 1289              	.L61:
+ 1290 0280 00000000 		.word	currentState
+ 1291 0284 00000000 		.word	u32AvgADC1Channel1
+ 1292 0288 00000000 		.word	u32AvgADC1Channel2
+ 1293 028c 00000000 		.word	u32AvgADC2
+ 1294 0290 00000000 		.word	u32AvgADC3
+ 1295 0294 00000000 		.word	u32AvgOverall
+ 1296 0298 00000000 		.word	au32ADC1Channel1Samples
+ 1297 029c 00000000 		.word	au32ADC1Channel2Samples
+ 1298 02a0 00000000 		.word	au32ADC2Samples
+ 1299 02a4 00000000 		.word	au32ADC3Samples
+ 1300 02a8 CDCCCCCC 		.word	-858993459
+ 1301 02ac 00000000 		.word	u8LeftBackPercent
+ 1302 02b0 00000000 		.word	u8RightBackPercent
+ 1303 02b4 00000000 		.word	u8RightFrontPercent
+ 1304 02b8 00000000 		.word	u8LeftFrontPercent
+ 1305 02bc 00000000 		.word	u16numberOfADCLowWeightSamples
+ 1306 02c0 00080240 		.word	1073874944
+ 1307 02c4 00100240 		.word	1073876992
+ 1308 02c8 00000000 		.word	nextState
+ 1309 02cc 00000000 		.word	bIsBLEConnected
+ 1310              		.cfi_endproc
+ 1311              	.LFE128:
+ 1313              		.section	.text.FSMSendBluetoothData,"ax",%progbits
+ 1314              		.align	1
+ARM GAS  /tmp/cc0JlP6E.s 			page 31
+
+
+ 1315              		.global	FSMSendBluetoothData
+ 1316              		.syntax unified
+ 1317              		.thumb
+ 1318              		.thumb_func
+ 1319              		.fpu fpv4-sp-d16
+ 1321              	FSMSendBluetoothData:
+ 1322              	.LFB129:
+ 450:Src/BalanceFSM.c **** 
+ 451:Src/BalanceFSM.c **** void FSMSendBluetoothData()
+ 452:Src/BalanceFSM.c **** {
+ 1323              		.loc 1 452 0
+ 1324              		.cfi_startproc
+ 1325              		@ args = 0, pretend = 0, frame = 0
+ 1326              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1327              		@ link register save eliminated.
+ 1328 0000 80B4     		push	{r7}
+ 1329              	.LCFI16:
+ 1330              		.cfi_def_cfa_offset 4
+ 1331              		.cfi_offset 7, -4
+ 1332 0002 00AF     		add	r7, sp, #0
+ 1333              	.LCFI17:
+ 1334              		.cfi_def_cfa_register 7
+ 453:Src/BalanceFSM.c **** 	if(currentState == SendBluetoothData)
+ 1335              		.loc 1 453 0
+ 1336 0004 074B     		ldr	r3, .L66
+ 1337 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1338 0008 042B     		cmp	r3, #4
+ 1339 000a 05D1     		bne	.L65
+ 454:Src/BalanceFSM.c **** 	{
+ 455:Src/BalanceFSM.c **** 		//Clear the received message
+ 456:Src/BalanceFSM.c **** 		au8UartReceivedMessage = NULL;
+ 1340              		.loc 1 456 0
+ 1341 000c 064B     		ldr	r3, .L66+4
+ 1342 000e 0022     		movs	r2, #0
+ 1343 0010 1A60     		str	r2, [r3]
+ 457:Src/BalanceFSM.c **** 
+ 458:Src/BalanceFSM.c **** 		//Make an array of uintu16numberOfADCLowWeightSamples8s that can be sent via UART.  These values 
+ 459:Src/BalanceFSM.c **** 		//the user's weight on each quadrant, starting with the front left value and moving clockwise
+ 460:Src/BalanceFSM.c **** 
+ 461:Src/BalanceFSM.c **** 		nextState = ReadSensorData;
+ 1344              		.loc 1 461 0
+ 1345 0012 064B     		ldr	r3, .L66+8
+ 1346 0014 0222     		movs	r2, #2
+ 1347 0016 1A70     		strb	r2, [r3]
+ 1348              	.L65:
+ 462:Src/BalanceFSM.c **** 
+ 463:Src/BalanceFSM.c **** 		//If the correct message was received, begin reading ADC values again.  If the Android device
+ 464:Src/BalanceFSM.c **** 		//sent the wrong message, or no message at all, try to send the message again and set an error
+ 465:Src/BalanceFSM.c **** 		//LED
+ 466:Src/BalanceFSM.c **** 	}
+ 467:Src/BalanceFSM.c **** 
+ 468:Src/BalanceFSM.c **** }
+ 1349              		.loc 1 468 0
+ 1350 0018 00BF     		nop
+ 1351 001a BD46     		mov	sp, r7
+ 1352              	.LCFI18:
+ 1353              		.cfi_def_cfa_register 13
+ARM GAS  /tmp/cc0JlP6E.s 			page 32
+
+
+ 1354              		@ sp needed
+ 1355 001c 5DF8047B 		ldr	r7, [sp], #4
+ 1356              	.LCFI19:
+ 1357              		.cfi_restore 7
+ 1358              		.cfi_def_cfa_offset 0
+ 1359 0020 7047     		bx	lr
+ 1360              	.L67:
+ 1361 0022 00BF     		.align	2
+ 1362              	.L66:
+ 1363 0024 00000000 		.word	currentState
+ 1364 0028 00000000 		.word	au8UartReceivedMessage
+ 1365 002c 00000000 		.word	nextState
+ 1366              		.cfi_endproc
+ 1367              	.LFE129:
+ 1369              		.section	.text.FSMProgramTermination,"ax",%progbits
+ 1370              		.align	1
+ 1371              		.global	FSMProgramTermination
+ 1372              		.syntax unified
+ 1373              		.thumb
+ 1374              		.thumb_func
+ 1375              		.fpu fpv4-sp-d16
+ 1377              	FSMProgramTermination:
+ 1378              	.LFB130:
+ 469:Src/BalanceFSM.c **** 
+ 470:Src/BalanceFSM.c **** void FSMProgramTermination()
+ 471:Src/BalanceFSM.c **** {
+ 1379              		.loc 1 471 0
+ 1380              		.cfi_startproc
+ 1381              		@ args = 0, pretend = 0, frame = 0
+ 1382              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1383 0000 80B5     		push	{r7, lr}
+ 1384              	.LCFI20:
+ 1385              		.cfi_def_cfa_offset 8
+ 1386              		.cfi_offset 7, -8
+ 1387              		.cfi_offset 14, -4
+ 1388 0002 00AF     		add	r7, sp, #0
+ 1389              	.LCFI21:
+ 1390              		.cfi_def_cfa_register 7
+ 472:Src/BalanceFSM.c **** 	if(currentState == ProgramTermination)
+ 1391              		.loc 1 472 0
+ 1392 0004 0F4B     		ldr	r3, .L71
+ 1393 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1394 0008 052B     		cmp	r3, #5
+ 1395 000a 19D1     		bne	.L70
+ 473:Src/BalanceFSM.c **** 	{
+ 474:Src/BalanceFSM.c **** 		u16numberOfADCLowWeightSamples = 0;
+ 1396              		.loc 1 474 0
+ 1397 000c 0E4B     		ldr	r3, .L71+4
+ 1398 000e 0022     		movs	r2, #0
+ 1399 0010 1A80     		strh	r2, [r3]	@ movhi
+ 475:Src/BalanceFSM.c **** 		//Make sure to turn off all buzzers once the program is complete
+ 476:Src/BalanceFSM.c **** 		HAL_GPIO_WritePin(FrontRightBuzz_GPIO_Port, FrontRightBuzz_Pin, GPIO_PIN_RESET);
+ 1400              		.loc 1 476 0
+ 1401 0012 0022     		movs	r2, #0
+ 1402 0014 1021     		movs	r1, #16
+ 1403 0016 0D48     		ldr	r0, .L71+8
+ 1404 0018 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ARM GAS  /tmp/cc0JlP6E.s 			page 33
+
+
+ 477:Src/BalanceFSM.c **** 		HAL_GPIO_WritePin(FrontLeftBuzz_GPIO_Port, FrontLeftBuzz_Pin, GPIO_PIN_RESET);
+ 1405              		.loc 1 477 0
+ 1406 001c 0022     		movs	r2, #0
+ 1407 001e 0421     		movs	r1, #4
+ 1408 0020 0B48     		ldr	r0, .L71+12
+ 1409 0022 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 478:Src/BalanceFSM.c **** 		HAL_GPIO_WritePin(BackRightBuzz_GPIO_Port, BackRightBuzz_Pin, GPIO_PIN_RESET);
+ 1410              		.loc 1 478 0
+ 1411 0026 0022     		movs	r2, #0
+ 1412 0028 2021     		movs	r1, #32
+ 1413 002a 0848     		ldr	r0, .L71+8
+ 1414 002c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 479:Src/BalanceFSM.c **** 		HAL_GPIO_WritePin(BackLeftBuzz_GPIO_Port, BackLeftBuzz_Pin, GPIO_PIN_RESET);
+ 1415              		.loc 1 479 0
+ 1416 0030 0022     		movs	r2, #0
+ 1417 0032 0821     		movs	r1, #8
+ 1418 0034 0648     		ldr	r0, .L71+12
+ 1419 0036 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 480:Src/BalanceFSM.c **** 
+ 481:Src/BalanceFSM.c **** 		//Go back to the initializing state
+ 482:Src/BalanceFSM.c **** 		nextState = Initializing;
+ 1420              		.loc 1 482 0
+ 1421 003a 064B     		ldr	r3, .L71+16
+ 1422 003c 0022     		movs	r2, #0
+ 1423 003e 1A70     		strb	r2, [r3]
+ 1424              	.L70:
+ 483:Src/BalanceFSM.c **** 	}
+ 484:Src/BalanceFSM.c **** 
+ 485:Src/BalanceFSM.c **** }
+ 1425              		.loc 1 485 0
+ 1426 0040 00BF     		nop
+ 1427 0042 80BD     		pop	{r7, pc}
+ 1428              	.L72:
+ 1429              		.align	2
+ 1430              	.L71:
+ 1431 0044 00000000 		.word	currentState
+ 1432 0048 00000000 		.word	u16numberOfADCLowWeightSamples
+ 1433 004c 00080240 		.word	1073874944
+ 1434 0050 00100240 		.word	1073876992
+ 1435 0054 00000000 		.word	nextState
+ 1436              		.cfi_endproc
+ 1437              	.LFE130:
+ 1439              		.section	.text.RunADCs,"ax",%progbits
+ 1440              		.align	1
+ 1441              		.global	RunADCs
+ 1442              		.syntax unified
+ 1443              		.thumb
+ 1444              		.thumb_func
+ 1445              		.fpu fpv4-sp-d16
+ 1447              	RunADCs:
+ 1448              	.LFB131:
+ 486:Src/BalanceFSM.c **** 
+ 487:Src/BalanceFSM.c **** void RunADCs()
+ 488:Src/BalanceFSM.c **** {
+ 1449              		.loc 1 488 0
+ 1450              		.cfi_startproc
+ 1451              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  /tmp/cc0JlP6E.s 			page 34
+
+
+ 1452              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1453 0000 80B5     		push	{r7, lr}
+ 1454              	.LCFI22:
+ 1455              		.cfi_def_cfa_offset 8
+ 1456              		.cfi_offset 7, -8
+ 1457              		.cfi_offset 14, -4
+ 1458 0002 00AF     		add	r7, sp, #0
+ 1459              	.LCFI23:
+ 1460              		.cfi_def_cfa_register 7
+ 489:Src/BalanceFSM.c **** 	//Runs all ADCs in single sample mode
+ 490:Src/BalanceFSM.c **** 	HAL_ADC_Start_IT(&hadc2);
+ 1461              		.loc 1 490 0
+ 1462 0004 0548     		ldr	r0, .L74
+ 1463 0006 FFF7FEFF 		bl	HAL_ADC_Start_IT
+ 491:Src/BalanceFSM.c **** 	HAL_ADC_Start_IT(&hadc3);
+ 1464              		.loc 1 491 0
+ 1465 000a 0548     		ldr	r0, .L74+4
+ 1466 000c FFF7FEFF 		bl	HAL_ADC_Start_IT
+ 492:Src/BalanceFSM.c **** 	HAL_ADC_Start_IT(&hadc1);
+ 1467              		.loc 1 492 0
+ 1468 0010 0448     		ldr	r0, .L74+8
+ 1469 0012 FFF7FEFF 		bl	HAL_ADC_Start_IT
+ 493:Src/BalanceFSM.c **** 
+ 494:Src/BalanceFSM.c **** }
+ 1470              		.loc 1 494 0
+ 1471 0016 00BF     		nop
+ 1472 0018 80BD     		pop	{r7, pc}
+ 1473              	.L75:
+ 1474 001a 00BF     		.align	2
+ 1475              	.L74:
+ 1476 001c 00000000 		.word	hadc2
+ 1477 0020 00000000 		.word	hadc3
+ 1478 0024 00000000 		.word	hadc1
+ 1479              		.cfi_endproc
+ 1480              	.LFE131:
+ 1482              		.section	.text.HAL_ADC_ConvCpltCallback,"ax",%progbits
+ 1483              		.align	1
+ 1484              		.global	HAL_ADC_ConvCpltCallback
+ 1485              		.syntax unified
+ 1486              		.thumb
+ 1487              		.thumb_func
+ 1488              		.fpu fpv4-sp-d16
+ 1490              	HAL_ADC_ConvCpltCallback:
+ 1491              	.LFB132:
+ 495:Src/BalanceFSM.c **** 
+ 496:Src/BalanceFSM.c **** //Called when ADC has completed both conversions
+ 497:Src/BalanceFSM.c **** void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
+ 498:Src/BalanceFSM.c **** {
+ 1492              		.loc 1 498 0
+ 1493              		.cfi_startproc
+ 1494              		@ args = 0, pretend = 0, frame = 8
+ 1495              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1496 0000 80B5     		push	{r7, lr}
+ 1497              	.LCFI24:
+ 1498              		.cfi_def_cfa_offset 8
+ 1499              		.cfi_offset 7, -8
+ 1500              		.cfi_offset 14, -4
+ARM GAS  /tmp/cc0JlP6E.s 			page 35
+
+
+ 1501 0002 82B0     		sub	sp, sp, #8
+ 1502              	.LCFI25:
+ 1503              		.cfi_def_cfa_offset 16
+ 1504 0004 00AF     		add	r7, sp, #0
+ 1505              	.LCFI26:
+ 1506              		.cfi_def_cfa_register 7
+ 1507 0006 7860     		str	r0, [r7, #4]
+ 499:Src/BalanceFSM.c **** 	//Make sure ADC1 has been the one causing the interrupt
+ 500:Src/BalanceFSM.c **** 	if(hadc -> Instance == ADC1)
+ 1508              		.loc 1 500 0
+ 1509 0008 7B68     		ldr	r3, [r7, #4]
+ 1510 000a 1B68     		ldr	r3, [r3]
+ 1511 000c 164A     		ldr	r2, .L80
+ 1512 000e 9342     		cmp	r3, r2
+ 1513 0010 26D1     		bne	.L79
+ 501:Src/BalanceFSM.c **** 	{
+ 502:Src/BalanceFSM.c **** 		//The system will interrupt once each channel is converted, so read the first
+ 503:Src/BalanceFSM.c **** 		//one
+ 504:Src/BalanceFSM.c **** 		if(bIsThisFirstChannelADC1)
+ 1514              		.loc 1 504 0
+ 1515 0012 164B     		ldr	r3, .L80+4
+ 1516 0014 1B78     		ldrb	r3, [r3]
+ 1517 0016 DBB2     		uxtb	r3, r3
+ 1518 0018 002B     		cmp	r3, #0
+ 1519 001a 0CD0     		beq	.L78
+ 505:Src/BalanceFSM.c **** 		{
+ 506:Src/BalanceFSM.c **** 			//Get the value and set the semaphore
+ 507:Src/BalanceFSM.c **** 			u32ADC1Channel1Value = HAL_ADC_GetValue(&hadc1);
+ 1520              		.loc 1 507 0
+ 1521 001c 1448     		ldr	r0, .L80+8
+ 1522 001e FFF7FEFF 		bl	HAL_ADC_GetValue
+ 1523 0022 0246     		mov	r2, r0
+ 1524 0024 134B     		ldr	r3, .L80+12
+ 1525 0026 1A60     		str	r2, [r3]
+ 508:Src/BalanceFSM.c **** 			bIsThisFirstChannelADC1 = false;
+ 1526              		.loc 1 508 0
+ 1527 0028 104B     		ldr	r3, .L80+4
+ 1528 002a 0022     		movs	r2, #0
+ 1529 002c 1A70     		strb	r2, [r3]
+ 509:Src/BalanceFSM.c **** 
+ 510:Src/BalanceFSM.c **** 			//Start the second conversion
+ 511:Src/BalanceFSM.c **** 			HAL_ADC_Start_IT(&hadc1);
+ 1530              		.loc 1 511 0
+ 1531 002e 1048     		ldr	r0, .L80+8
+ 1532 0030 FFF7FEFF 		bl	HAL_ADC_Start_IT
+ 512:Src/BalanceFSM.c **** 		}
+ 513:Src/BalanceFSM.c **** 		else
+ 514:Src/BalanceFSM.c **** 		{
+ 515:Src/BalanceFSM.c **** 			//Get the second value and change the semaphore
+ 516:Src/BalanceFSM.c **** 			u32ADC1Channel2Value = HAL_ADC_GetValue(&hadc1);
+ 517:Src/BalanceFSM.c **** 			bIsThisFirstChannelADC1 = true;
+ 518:Src/BalanceFSM.c **** 
+ 519:Src/BalanceFSM.c **** 			//ADC2 and ADC3 should be done converting by this point
+ 520:Src/BalanceFSM.c **** 			u32ADC2Value = HAL_ADC_GetValue(&hadc2);
+ 521:Src/BalanceFSM.c **** 			u32ADC3Value = HAL_ADC_GetValue(&hadc3);
+ 522:Src/BalanceFSM.c **** 		}
+ 523:Src/BalanceFSM.c **** 	}
+ARM GAS  /tmp/cc0JlP6E.s 			page 36
+
+
+ 524:Src/BalanceFSM.c **** 
+ 525:Src/BalanceFSM.c **** }
+ 1533              		.loc 1 525 0
+ 1534 0034 14E0     		b	.L79
+ 1535              	.L78:
+ 516:Src/BalanceFSM.c **** 			bIsThisFirstChannelADC1 = true;
+ 1536              		.loc 1 516 0
+ 1537 0036 0E48     		ldr	r0, .L80+8
+ 1538 0038 FFF7FEFF 		bl	HAL_ADC_GetValue
+ 1539 003c 0246     		mov	r2, r0
+ 1540 003e 0E4B     		ldr	r3, .L80+16
+ 1541 0040 1A60     		str	r2, [r3]
+ 517:Src/BalanceFSM.c **** 
+ 1542              		.loc 1 517 0
+ 1543 0042 0A4B     		ldr	r3, .L80+4
+ 1544 0044 0122     		movs	r2, #1
+ 1545 0046 1A70     		strb	r2, [r3]
+ 520:Src/BalanceFSM.c **** 			u32ADC3Value = HAL_ADC_GetValue(&hadc3);
+ 1546              		.loc 1 520 0
+ 1547 0048 0C48     		ldr	r0, .L80+20
+ 1548 004a FFF7FEFF 		bl	HAL_ADC_GetValue
+ 1549 004e 0246     		mov	r2, r0
+ 1550 0050 0B4B     		ldr	r3, .L80+24
+ 1551 0052 1A60     		str	r2, [r3]
+ 521:Src/BalanceFSM.c **** 		}
+ 1552              		.loc 1 521 0
+ 1553 0054 0B48     		ldr	r0, .L80+28
+ 1554 0056 FFF7FEFF 		bl	HAL_ADC_GetValue
+ 1555 005a 0246     		mov	r2, r0
+ 1556 005c 0A4B     		ldr	r3, .L80+32
+ 1557 005e 1A60     		str	r2, [r3]
+ 1558              	.L79:
+ 1559              		.loc 1 525 0
+ 1560 0060 00BF     		nop
+ 1561 0062 0837     		adds	r7, r7, #8
+ 1562              	.LCFI27:
+ 1563              		.cfi_def_cfa_offset 8
+ 1564 0064 BD46     		mov	sp, r7
+ 1565              	.LCFI28:
+ 1566              		.cfi_def_cfa_register 13
+ 1567              		@ sp needed
+ 1568 0066 80BD     		pop	{r7, pc}
+ 1569              	.L81:
+ 1570              		.align	2
+ 1571              	.L80:
+ 1572 0068 00200140 		.word	1073815552
+ 1573 006c 00000000 		.word	bIsThisFirstChannelADC1
+ 1574 0070 00000000 		.word	hadc1
+ 1575 0074 00000000 		.word	u32ADC1Channel1Value
+ 1576 0078 00000000 		.word	u32ADC1Channel2Value
+ 1577 007c 00000000 		.word	hadc2
+ 1578 0080 00000000 		.word	u32ADC2Value
+ 1579 0084 00000000 		.word	hadc3
+ 1580 0088 00000000 		.word	u32ADC3Value
+ 1581              		.cfi_endproc
+ 1582              	.LFE132:
+ 1584              		.section	.bss.u8numberOfADCSamples.8548,"aw",%nobits
+ARM GAS  /tmp/cc0JlP6E.s 			page 37
+
+
+ 1587              	u8numberOfADCSamples.8548:
+ 1588 0000 00       		.space	1
+ 1589              		.text
+ 1590              	.Letext0:
+ 1591              		.file 2 "/opt/gcc4mbed/gcc-arm-none-eabi/arm-none-eabi/include/machine/_default_types.h"
+ 1592              		.file 3 "/opt/gcc4mbed/gcc-arm-none-eabi/arm-none-eabi/include/sys/_stdint.h"
+ 1593              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
+ 1594              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
+ 1595              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 1596              		.file 7 "/opt/gcc4mbed/gcc-arm-none-eabi/arm-none-eabi/include/sys/lock.h"
+ 1597              		.file 8 "/opt/gcc4mbed/gcc-arm-none-eabi/arm-none-eabi/include/sys/_types.h"
+ 1598              		.file 9 "/opt/gcc4mbed/gcc-arm-none-eabi/lib/gcc/arm-none-eabi/6.3.1/include/stddef.h"
+ 1599              		.file 10 "/opt/gcc4mbed/gcc-arm-none-eabi/arm-none-eabi/include/sys/reent.h"
+ 1600              		.file 11 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 1601              		.file 12 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+ 1602              		.file 13 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 1603              		.file 14 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h"
+ 1604              		.file 15 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
+ 1605              		.file 16 "Inc/BalanceFSM.h"
+ARM GAS  /tmp/cc0JlP6E.s 			page 38
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 BalanceFSM.c
+     /tmp/cc0JlP6E.s:21     .bss.currentState:0000000000000000 currentState
+     /tmp/cc0JlP6E.s:22     .bss.currentState:0000000000000000 $d
+     /tmp/cc0JlP6E.s:27     .bss.nextState:0000000000000000 nextState
+     /tmp/cc0JlP6E.s:28     .bss.nextState:0000000000000000 $d
+     /tmp/cc0JlP6E.s:30     .data.u32ADC1Channel1Value:0000000000000000 $d
+     /tmp/cc0JlP6E.s:33     .data.u32ADC1Channel1Value:0000000000000000 u32ADC1Channel1Value
+     /tmp/cc0JlP6E.s:36     .data.u32ADC1Channel2Value:0000000000000000 $d
+     /tmp/cc0JlP6E.s:39     .data.u32ADC1Channel2Value:0000000000000000 u32ADC1Channel2Value
+     /tmp/cc0JlP6E.s:42     .data.u32ADC2Value:0000000000000000 $d
+     /tmp/cc0JlP6E.s:45     .data.u32ADC2Value:0000000000000000 u32ADC2Value
+     /tmp/cc0JlP6E.s:48     .data.u32ADC3Value:0000000000000000 $d
+     /tmp/cc0JlP6E.s:51     .data.u32ADC3Value:0000000000000000 u32ADC3Value
+     /tmp/cc0JlP6E.s:54     .bss.u32ADC1Channel1ValueNoWeightThreshold:0000000000000000 $d
+     /tmp/cc0JlP6E.s:57     .bss.u32ADC1Channel1ValueNoWeightThreshold:0000000000000000 u32ADC1Channel1ValueNoWeightThreshold
+     /tmp/cc0JlP6E.s:60     .bss.u32ADC1Channel2ValueNoWeightThreshold:0000000000000000 $d
+     /tmp/cc0JlP6E.s:63     .bss.u32ADC1Channel2ValueNoWeightThreshold:0000000000000000 u32ADC1Channel2ValueNoWeightThreshold
+     /tmp/cc0JlP6E.s:66     .bss.u32ADC2ValueNoWeightThreshold:0000000000000000 $d
+     /tmp/cc0JlP6E.s:69     .bss.u32ADC2ValueNoWeightThreshold:0000000000000000 u32ADC2ValueNoWeightThreshold
+     /tmp/cc0JlP6E.s:72     .bss.u32ADC3ValueNoWeightThreshold:0000000000000000 $d
+     /tmp/cc0JlP6E.s:75     .bss.u32ADC3ValueNoWeightThreshold:0000000000000000 u32ADC3ValueNoWeightThreshold
+     /tmp/cc0JlP6E.s:78     .bss.u32ADC1Channel1Zero:0000000000000000 $d
+     /tmp/cc0JlP6E.s:81     .bss.u32ADC1Channel1Zero:0000000000000000 u32ADC1Channel1Zero
+     /tmp/cc0JlP6E.s:84     .bss.u32ADC1Channel2Zero:0000000000000000 $d
+     /tmp/cc0JlP6E.s:87     .bss.u32ADC1Channel2Zero:0000000000000000 u32ADC1Channel2Zero
+     /tmp/cc0JlP6E.s:90     .bss.u32ADC2Zero:0000000000000000 $d
+     /tmp/cc0JlP6E.s:93     .bss.u32ADC2Zero:0000000000000000 u32ADC2Zero
+     /tmp/cc0JlP6E.s:96     .bss.u32ADC3Zero:0000000000000000 $d
+     /tmp/cc0JlP6E.s:99     .bss.u32ADC3Zero:0000000000000000 u32ADC3Zero
+     /tmp/cc0JlP6E.s:104    .bss.bIsThisFirstChannelADC1:0000000000000000 bIsThisFirstChannelADC1
+     /tmp/cc0JlP6E.s:105    .bss.bIsThisFirstChannelADC1:0000000000000000 $d
+     /tmp/cc0JlP6E.s:109    .data.bIsBLEConnected:0000000000000000 bIsBLEConnected
+     /tmp/cc0JlP6E.s:112    .bss.au32ADC1Channel1Samples:0000000000000000 $d
+     /tmp/cc0JlP6E.s:115    .bss.au32ADC1Channel1Samples:0000000000000000 au32ADC1Channel1Samples
+     /tmp/cc0JlP6E.s:118    .bss.au32ADC1Channel2Samples:0000000000000000 $d
+     /tmp/cc0JlP6E.s:121    .bss.au32ADC1Channel2Samples:0000000000000000 au32ADC1Channel2Samples
+     /tmp/cc0JlP6E.s:124    .bss.au32ADC2Samples:0000000000000000 $d
+     /tmp/cc0JlP6E.s:127    .bss.au32ADC2Samples:0000000000000000 au32ADC2Samples
+     /tmp/cc0JlP6E.s:130    .bss.au32ADC3Samples:0000000000000000 $d
+     /tmp/cc0JlP6E.s:133    .bss.au32ADC3Samples:0000000000000000 au32ADC3Samples
+     /tmp/cc0JlP6E.s:136    .bss.u32AvgADC1Channel1:0000000000000000 $d
+     /tmp/cc0JlP6E.s:139    .bss.u32AvgADC1Channel1:0000000000000000 u32AvgADC1Channel1
+     /tmp/cc0JlP6E.s:142    .bss.u32AvgADC1Channel2:0000000000000000 $d
+     /tmp/cc0JlP6E.s:145    .bss.u32AvgADC1Channel2:0000000000000000 u32AvgADC1Channel2
+     /tmp/cc0JlP6E.s:148    .bss.u32AvgADC2:0000000000000000 $d
+     /tmp/cc0JlP6E.s:151    .bss.u32AvgADC2:0000000000000000 u32AvgADC2
+     /tmp/cc0JlP6E.s:154    .bss.u32AvgADC3:0000000000000000 $d
+     /tmp/cc0JlP6E.s:157    .bss.u32AvgADC3:0000000000000000 u32AvgADC3
+     /tmp/cc0JlP6E.s:160    .bss.u32AvgOverall:0000000000000000 $d
+     /tmp/cc0JlP6E.s:163    .bss.u32AvgOverall:0000000000000000 u32AvgOverall
+     /tmp/cc0JlP6E.s:169    .data.u8LeftFrontPercent:0000000000000000 u8LeftFrontPercent
+     /tmp/cc0JlP6E.s:175    .data.u8LeftBackPercent:0000000000000000 u8LeftBackPercent
+     /tmp/cc0JlP6E.s:181    .data.u8RightFrontPercent:0000000000000000 u8RightFrontPercent
+     /tmp/cc0JlP6E.s:187    .data.u8RightBackPercent:0000000000000000 u8RightBackPercent
+     /tmp/cc0JlP6E.s:190    .bss.au8UartReceivedMessage:0000000000000000 $d
+     /tmp/cc0JlP6E.s:193    .bss.au8UartReceivedMessage:0000000000000000 au8UartReceivedMessage
+ARM GAS  /tmp/cc0JlP6E.s 			page 39
+
+
+     /tmp/cc0JlP6E.s:198    .bss.u8UartReceiveIndex:0000000000000000 u8UartReceiveIndex
+     /tmp/cc0JlP6E.s:199    .bss.u8UartReceiveIndex:0000000000000000 $d
+     /tmp/cc0JlP6E.s:201    .bss.u16numberOfADCLowWeightSamples:0000000000000000 $d
+     /tmp/cc0JlP6E.s:204    .bss.u16numberOfADCLowWeightSamples:0000000000000000 u16numberOfADCLowWeightSamples
+     /tmp/cc0JlP6E.s:209    .data.bFirstRun:0000000000000000 bFirstRun
+     /tmp/cc0JlP6E.s:212    .text.FSMStateController:0000000000000000 $t
+     /tmp/cc0JlP6E.s:219    .text.FSMStateController:0000000000000000 FSMStateController
+     /tmp/cc0JlP6E.s:243    .text.FSMStateController:0000000000000014 $d
+     /tmp/cc0JlP6E.s:249    .text.FSMStateController:000000000000002c $t
+     /tmp/cc0JlP6E.s:470    .text.FSMStateController:00000000000001b8 $d
+     /tmp/cc0JlP6E.s:490    .text.FSMInitializing:0000000000000000 $t
+     /tmp/cc0JlP6E.s:497    .text.FSMInitializing:0000000000000000 FSMInitializing
+     /tmp/cc0JlP6E.s:1447   .text.RunADCs:0000000000000000 RunADCs
+     /tmp/cc0JlP6E.s:588    .text.FSMInitializing:000000000000007c $d
+     /tmp/cc0JlP6E.s:597    .text.FSMWaitForAndroidAndWeight:0000000000000000 $t
+     /tmp/cc0JlP6E.s:604    .text.FSMWaitForAndroidAndWeight:0000000000000000 FSMWaitForAndroidAndWeight
+     /tmp/cc0JlP6E.s:668    .text.FSMWaitForAndroidAndWeight:0000000000000050 $d
+     /tmp/cc0JlP6E.s:682    .text.FSMReadSensorData:0000000000000000 $t
+     /tmp/cc0JlP6E.s:689    .text.FSMReadSensorData:0000000000000000 FSMReadSensorData
+     /tmp/cc0JlP6E.s:872    .text.FSMReadSensorData:0000000000000120 $d
+     /tmp/cc0JlP6E.s:1587   .bss.u8numberOfADCSamples.8548:0000000000000000 u8numberOfADCSamples.8548
+     /tmp/cc0JlP6E.s:891    .text.FSMProcessData:0000000000000000 $t
+     /tmp/cc0JlP6E.s:898    .text.FSMProcessData:0000000000000000 FSMProcessData
+     /tmp/cc0JlP6E.s:1290   .text.FSMProcessData:0000000000000280 $d
+     /tmp/cc0JlP6E.s:1314   .text.FSMSendBluetoothData:0000000000000000 $t
+     /tmp/cc0JlP6E.s:1321   .text.FSMSendBluetoothData:0000000000000000 FSMSendBluetoothData
+     /tmp/cc0JlP6E.s:1363   .text.FSMSendBluetoothData:0000000000000024 $d
+     /tmp/cc0JlP6E.s:1370   .text.FSMProgramTermination:0000000000000000 $t
+     /tmp/cc0JlP6E.s:1377   .text.FSMProgramTermination:0000000000000000 FSMProgramTermination
+     /tmp/cc0JlP6E.s:1431   .text.FSMProgramTermination:0000000000000044 $d
+     /tmp/cc0JlP6E.s:1440   .text.RunADCs:0000000000000000 $t
+     /tmp/cc0JlP6E.s:1476   .text.RunADCs:000000000000001c $d
+     /tmp/cc0JlP6E.s:1483   .text.HAL_ADC_ConvCpltCallback:0000000000000000 $t
+     /tmp/cc0JlP6E.s:1490   .text.HAL_ADC_ConvCpltCallback:0000000000000000 HAL_ADC_ConvCpltCallback
+     /tmp/cc0JlP6E.s:1572   .text.HAL_ADC_ConvCpltCallback:0000000000000068 $d
+     /tmp/cc0JlP6E.s:1588   .bss.u8numberOfADCSamples.8548:0000000000000000 $d
+                     .debug_frame:0000000000000010 $d
+
+UNDEFINED SYMBOLS
+HAL_GPIO_WritePin
+HAL_Delay
+HAL_UART_Transmit
+huart1
+HAL_ADC_Start_IT
+hadc2
+hadc3
+hadc1
+HAL_ADC_GetValue
